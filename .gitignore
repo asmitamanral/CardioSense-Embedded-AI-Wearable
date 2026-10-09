@@ -1,0 +1,29 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arduino & PlatformIO build artifacts
+.pio/
+build/
+*.bin
+*.hex
+*.elf
+
+# Environment & Virtualenvs
+env/
+venv/
+.env

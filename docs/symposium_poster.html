@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CardioSense - Academic Symposium Poster (A0/A1 Format)</title>
+  <style>
+    :root {
+      --primary: #0a192f;
+      --secondary: #172a45;
+      --accent-cyan: #00f0ff;
+      --accent-green: #00ff88;
+      --accent-red: #ff3366;
+      --accent-yellow: #ffb800;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: #112240;
+      --border-color: #233554;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--primary);
+      color: var(--text-main);
+      padding: 24px;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Header Banner */
+    header {
+      background: var(--secondary);
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .title-box h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .title-box p {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .meta-box {
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .meta-box .badge {
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    /* 3-Column Poster Grid */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Section Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+    }
+
+    .card h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      color: var(--accent-green);
+      margin-top: 4px;
+    }
+
+    p, li {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    ul { padding-left: 18px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: var(--secondary);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Visual Diagram Boxes */
+    .diagram-box {
+      background: #060e1d;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: "Consolas", monospace;
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+    }
+
+    .highlight-stat {
+      display: flex;
+      justify-content: space-around;
+      background: var(--secondary);
+      border-radius: 8px;
+      padding: 10px;
+      margin: 4px 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    @media print {
+      body { padding: 0; background: #fff; color: #000; }
+      .card { background: #fff; border: 1px solid #ccc; color: #000; box-shadow: none; }
+      .card h2 { color: #0f2b5c; }
+      .diagram-box { background: #f8fafc; color: #000; border-color: #ccc; }
+      th { background: #eee; color: #000; }
+      td, th { border-color: #ddd; }
+      .title-box h1 { background: none; -webkit-text-fill-color: #0f2b5c; color: #0f2b5c; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="title-box">
+      <h1>CardioSense: Two-Node Embedded AI Wearable for Pre-Arrest Risk Detection</h1>
+      <p>Zero-Adhesive Biotelemetry via Multi-Modal Sensor Fusion and Motion-Gated Edge Inference</p>
+    </div>
+    <div class="meta-box">
+      <div class="badge">Track 1: Smart Healthcare / IoT / Applied AI</div>
+      <div><strong>Make in Silicon Ideathon</strong> &bull; IIIT Naya Raipur (IIITNR)</div>
+      <div style="color: var(--accent-green); margin-top: 4px;">Prototype BOM: &lt;&#8377;3,150 (~$37) &bull; 100% Offline Edge Autonomy</div>
+    </div>
+  </header>
+
+  <!-- 3-COLUMN MAIN POSTER GRID -->
+  <div class="poster-grid">
+
+    <!-- COLUMN 1: Clinical Problem & Sensor Decoupling -->
+    <div class="column">
+      
+      <!-- Card 1.1: The Clinical Reality -->
+      <div class="card">
+        <h2>1. Clinical Dilemma & Motivation</h2>
+        <div class="highlight-stat">
+          <div class="stat-item">
+            <div class="stat-val" style="color: var(--accent-red);">350,000+</div>
+            <div class="stat-lbl">Annual SCA Deaths</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: var(--accent-yellow);">&lt; 5%</div>
+            <div class="stat-lbl">India Survival Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: var(--accent-green);">15&ndash;30 min</div>
+            <div class="stat-lbl">Precursor Window</div>
+          </div>
+        </div>
+        <p><strong>The 4-Minute vs. 20-Minute Paradox:</strong> Biological irreversible brain death occurs in 4 minutes of circulatory collapse. However, Indian urban/rural ambulance transit averages 20–40 minutes.</p>
+        <p><strong>Why Existing Technologies Fail:</strong></p>
+        <ul>
+          <li><strong>Consumer Smartwatches:</strong> Detect pulse loss <em>post-collapse</em> (biologically futile); prone to pervasive exercise false alarms; blind to breathing.</li>
+          <li><strong>Clinical Holter/ECG Patches:</strong> Wet hydrogel electrodes dry in 24–48 hours, cause contact dermatitis, and suffer from &lt;15% long-term patient compliance.</li>
+        </ul>
+      </div>
+
+      <!-- Card 1.2: Precursor Pathophysiology -->
+      <div class="card">
+        <h2>2. Pre-Arrest Electrophysiology</h2>
+        <p>Over 50% of out-of-hospital cardiac events exhibit multi-system precursor symptoms 15 to 30 minutes before cardiac arrest:</p>
+        <div class="diagram-box">
+[ Acute Myocardial Ischemia (Na+/K+ pump failure) ]
+               │
+               ▼
+[ Stroke Volume Drop & MAP Depolarization ]
+               │
+       ┌───────┴───────┐
+       ▼               ▼
+[ Sympathetic Diaphoresis ]   [ Pulmonary Hypoperfusion ]
+• α1: Skin vasoconstriction   • Arterial SpO2 &lt; 88%
+• M3: Cold sweat surge        • Agonal tachypnea (&gt;30 BrPM)
+• ΔGSR &gt; +3.0 μS/min          • Occurs AT REST (SVM &lt; 0.1g)
+        </div>
+      </div>
+
+      <!-- Card 1.3: Anatomical Decoupling -->
+      <div class="card">
+        <h2>3. Anatomical Decoupling (2-Node BAN)</h2>
+        <p>Decouples sensing across two physiologically optimal sites without bare-skin chest adhesives:</p>
+        <ul>
+          <li><strong>Wrist Slap-Band (Skin Contact):</strong> MAX30102 Optical PPG (HR, SpO<sub>2</sub>) + Grove GSR for palmar sympathetic cold sweats.</li>
+          <li><strong>Sternum Locket (Through-Clothing):</strong> MPU6050 Accelerometer coupled to thoracic bone through clothing; measures respiration and fall dynamics.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- COLUMN 2: Architecture & TinyML Edge AI -->
+    <div class="column">
+      
+      <!-- Card 2.1: System Architecture -->
+      <div class="card">
+        <h2>4. System Architecture & Dual-Core MCU</h2>
+        <div class="diagram-box">
+[ NODE 1: WRIST SLAP-BAND ]             [ NODE 2: STERNUM LOCKET HUB ]
+• MAX30102 PPG (HR + SpO2)              • MPU6050 IMU (Chest Respiration)
+• Grove GSR (Cold Sweats / EDA)         • Dual-Use Fall Detection (&gt;3.0g)
+• ESP32 BLE Peripheral (20 Hz)          • Sensed Through Fabric (Zero Tape)
+                    │                   • Dual-Core ESP32 Central + TinyML
+                    └───► BLE 5.0 ──────► Core 0: BLE & GPS (FreeRTOS)
+                          (20 Hz)       │ Core 1: DSP & TinyML Autoencoder
+                                        ▼
+                                [ 10s DSP Sliding Buffer ]
+                                        ▼
+                                [ Kinetic Motion Gate ]
+        </div>
+        <p><strong>Deterministic FreeRTOS Allocation:</strong> Core 0 manages BLE GATT streaming & GPS NMEA parsing; Core 1 executes DSP ring-buffering & neural inference without packet drops.</p>
+      </div>
+
+      <!-- Card 2.2: TinyML Autoencoder & Motion Gating -->
+      <div class="card">
+        <h2>5. TinyML Autoencoder & Motion Gating</h2>
+        <p>An unsupervised Autoencoder (<strong>8 &rarr; 4 &rarr; 2 &rarr; 4 &rarr; 8</strong>) models the wearer's healthy resting baseline across 8 normalized physiological features:</p>
+        <p><code>x = [HR, HRV-RMSSD, SpO2, Resp-Rate, Resp-Depth, GSR, ΔGSR-Slope, Motion-SVM]</code></p>
+        <div class="diagram-box">
+Reconstruction Error:  MSE = 1/8 * Σ (x_i - x̂_i)²
+
+Kinetic Motion-Gating Formula (Rejects Jogging False Alarms):
+Threshold_dyn = Threshold_base * [1 + 2.5 * max(0, SVM - 0.40g)]
+
+• Exercise (SVM &gt; 0.4g): High HR + High Motion ──► Dynamic Threshold Rises ──► NORMAL
+• Crisis   (SVM &lt; 0.1g): High HR + Cold Sweat + Hypoxia + NO Motion ──► ALARM!
+        </div>
+      </div>
+
+      <!-- Card 2.3: In-Silico Benchmarking Table -->
+      <div class="card">
+        <h2>6. In-Silico Validation & Compute Metrics</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Parameter</th>
+              <th>CardioSense Benchmark</th>
+              <th>Silicon Context (ESP32)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Precursor Sensitivity</strong></td>
+              <td style="color: var(--accent-green); font-weight:700;">100.00%</td>
+              <td>Tested on MIMIC-III modeled trajectories</td>
+            </tr>
+            <tr>
+              <td><strong>Baseline Specificity</strong></td>
+              <td style="color: var(--accent-green); font-weight:700;">99.00%</td>
+              <td>1.0% false alarm rate in quiescent state</td>
+            </tr>
+            <tr>
+              <td><strong>Reconstruction Error Separation</strong></td>
+              <td style="color: var(--accent-cyan); font-weight:700;">71.09x Amplification</td>
+              <td>Baseline MSE: 0.0020 vs Crisis: 0.1446</td>
+            </tr>
+            <tr>
+              <td><strong>Forward Inference Latency</strong></td>
+              <td style="color: var(--accent-yellow); font-weight:700;">&lt; 18 &mu;s</td>
+              <td>94 MAC operations @ 240 MHz (<0.002% CPU)</td>
+            </tr>
+            <tr>
+              <td><strong>Model Parameter Footprint</strong></td>
+              <td style="color: var(--accent-cyan); font-weight:700;">376 Bytes (94 floats)</td>
+              <td>Fits in L1 cache / TCM; &lt;14 KB SRAM total</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- COLUMN 3: Escalation, Dual-Tier AI, BOM & Roadmap -->
+    <div class="column">
+      
+      <!-- Card 3.1: Two-Stage Fail-Safe Emergency Escalation -->
+      <div class="card">
+        <h2>7. Two-Stage Fail-Safe Escalation</h2>
+        <div class="diagram-box">
+[ Anomaly Detected (MSE &gt; Threshold_dyn) ]
+                   │
+                   ▼
+┌──────────────────────────────────────────────┐
+│ STAGE 1: LOCAL PRE-ALERT (30-Second Window)  │
+│ • 1 Hz Haptic Pulsing + Warning Audio Beeps  │
+│ • Conscious wearers hit CANCEL BUTTON to abort│
+└──────────────────────┬───────────────────────┘
+                       │ (Uncancelled after 30s)
+                       ▼
+┌──────────────────────────────────────────────┐
+│ STAGE 2: AUTONOMOUS EMERGENCY DISPATCH       │
+│ • Local 85 dB Continuous Siren + Red LED     │
+│ • SIM800L Location-Tagged SMS (Google Maps)  │
+│ • Automated Caregiver Voice Call (DTMF Tone) │
+└──────────────────────────────────────────────┘
+        </div>
+      </div>
+
+      <!-- Card 3.2: Dual-Tier AI Ecosystem -->
+      <div class="card">
+        <h2>8. Dual-Tier AI Ecosystem</h2>
+        <ul>
+          <li><strong>Tier 1 (On-Device Edge AI):</strong> Embedded Autoencoder runs 100% offline on ESP32 in &lt;18 &mu;s to catch the crisis and save the life.</li>
+          <li><strong>Tier 2 (Emergency Response AI):</strong>
+            <ul>
+              <li><strong>SBAR Clinical Brief:</strong> Generates structured trauma brief for ER doctors before ambulance arrival.</li>
+              <li><strong>Bystander CPR Audio Coach:</strong> Phone voice assistant guides family through chest compressions at 110 BPM.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card 3.3: Bill of Materials & Roadmap -->
+      <div class="card">
+        <h2>9. Cost Feasibility & Roadmap</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Subsystem Component</th>
+              <th>Model / Purpose</th>
+              <th>Cost (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Microcontrollers (x2)</td>
+              <td>ESP32-WROOM-32 (Dual-Core BLE)</td>
+              <td>&#8377;700</td>
+            </tr>
+            <tr>
+              <td>Optical Wrist Sensor</td>
+              <td>MAX30102 PPG (HR + SpO<sub>2</sub>)</td>
+              <td>&#8377;220</td>
+            </tr>
+            <tr>
+              <td>Electrodermal Sensor</td>
+              <td>Grove GSR (Skin Conductance)</td>
+              <td>&#8377;320</td>
+            </tr>
+            <tr>
+              <td>Thoracic Accelerometer</td>
+              <td>MPU-6050 6-Axis IMU (Respiration/Fall)</td>
+              <td>&#8377;130</td>
+            </tr>
+            <tr>
+              <td>Cellular & GPS Modules</td>
+              <td>SIM800L GSM + Neo-6M GPS</td>
+              <td>&#8377;870</td>
+            </tr>
+            <tr>
+              <td>Power & Actuators</td>
+              <td>LiPo Cells, Buck, Buzzer, Button</td>
+              <td>&#8377;910</td>
+            </tr>
+            <tr>
+              <td colspan="2"><strong>TOTAL ESTIMATED PROTOTYPE BOM</strong></td>
+              <td style="color:var(--accent-green); font-weight:700;">&#8377;3,150 (~$37)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px; margin-top:4px;"><strong>Phase 2 Roadmap:</strong> Custom 4-layer PCB fabrication &bull; SIM7600 4G LTE Cat-1 migration &bull; Institutional Review Board (IRB) elderly center trials.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div><strong>CardioSense Project</strong> &bull; Indian Healthcare Innovation &bull; Zero-Adhesive Edge Biotelemetry</div>
+    <div>Complete Working Firmware, Trained Weights & Testbench: <code>CardioSense/firmware/</code></div>
+  </footer>
+
+</body>
+</html>

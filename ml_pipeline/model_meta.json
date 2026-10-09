@@ -1,0 +1,51 @@
+{
+  "features": [
+    "hr",
+    "hrv_rmssd",
+    "spo2",
+    "resp_rate",
+    "resp_depth",
+    "gsr_level",
+    "gsr_slope",
+    "motion_svm"
+  ],
+  "bounds": {
+    "hr": [
+      40.0,
+      200.0
+    ],
+    "hrv_rmssd": [
+      5.0,
+      120.0
+    ],
+    "spo2": [
+      70.0,
+      100.0
+    ],
+    "resp_rate": [
+      6.0,
+      45.0
+    ],
+    "resp_depth": [
+      0.05,
+      1.0
+    ],
+    "gsr_level": [
+      0.5,
+      25.0
+    ],
+    "gsr_slope": [
+      -2.0,
+      8.0
+    ],
+    "motion_svm": [
+      0.0,
+      2.5
+    ]
+  },
+  "threshold": 0.008112524636089802,
+  "normal_mean_mse": 0.002033655531704426,
+  "precursor_mean_mse": 0.14457909762859344,
+  "sensitivity": 100.0,
+  "specificity": 99.0
+}

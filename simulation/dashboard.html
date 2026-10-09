@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioSense - Two-Node Embedded AI Wearable Dashboard</title>
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --panel-bg: #131b2e;
+      --card-bg: #1a243d;
+      --border-color: #243456;
+      --accent-cyan: #00f0ff;
+      --accent-green: #00ff88;
+      --accent-yellow: #ffb800;
+      --accent-red: #ff3366;
+      --text-main: #f0f4ff;
+      --text-muted: #8a9bb8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    .title-group h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-group p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .left-col, .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Scenario Bar */
+    .scenario-bar {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .scenario-bar span {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+
+    .btn:hover { border-color: var(--accent-cyan); transform: translateY(-1px); }
+    .btn.active {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-danger {
+      background: rgba(255, 51, 102, 0.15);
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+    .btn-danger.active {
+      background: var(--accent-red);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
+    }
+
+    /* Vitals HUD Cards */
+    .vitals-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .vital-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vital-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent-cyan);
+    }
+
+    .vital-card.warning::before { background: var(--accent-yellow); }
+    .vital-card.critical::before { background: var(--accent-red); }
+
+    .vital-card .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .vital-card .val {
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .vital-card .unit {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .vital-card .subtext {
+      font-size: 11px;
+      margin-top: 4px;
+      color: var(--accent-green);
+    }
+
+    /* Waveforms Canvas */
+    .waveform-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .panel-header h3 {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-header .badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--accent-cyan);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100px;
+      background: #0d1322;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* TinyML & Emergency Panel */
+    .panel-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    /* Reconstruction Meter */
+    .meter-container {
+      margin: 15px 0;
+    }
+
+    .meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .meter-bar {
+      height: 18px;
+      background: #0d1322;
+      border-radius: 9px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border-color);
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 5%;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-yellow));
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .threshold-marker {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: #fff;
+      box-shadow: 0 0 6px #fff;
+      left: 30%;
+    }
+
+    /* Emergency Alert Box */
+    .alert-box {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      background: #111827;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .alert-box.normal {
+      border-color: rgba(0, 255, 136, 0.3);
+      background: rgba(0, 255, 136, 0.05);
+    }
+
+    .alert-box.stage1 {
+      border-color: var(--accent-yellow);
+      background: rgba(255, 184, 0, 0.1);
+      animation: alertBlink 1s infinite alternate;
+    }
+
+    .alert-box.stage2 {
+      border-color: var(--accent-red);
+      background: rgba(255, 51, 102, 0.15);
+      animation: alertBlinkRed 0.5s infinite alternate;
+    }
+
+    @keyframes alertBlink {
+      from { box-shadow: 0 0 5px rgba(255, 184, 0, 0.2); }
+      to { box-shadow: 0 0 25px rgba(255, 184, 0, 0.6); }
+    }
+
+    @keyframes alertBlinkRed {
+      from { box-shadow: 0 0 10px rgba(255, 51, 102, 0.3); }
+      to { box-shadow: 0 0 35px rgba(255, 51, 102, 0.9); }
+    }
+
+    .alert-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .countdown-timer {
+      font-size: 40px;
+      font-weight: 800;
+      font-family: monospace;
+      color: var(--accent-yellow);
+      margin: 8px 0;
+    }
+
+    .btn-abort {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      background: #374151;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-abort.active {
+      background: var(--accent-yellow);
+      color: #000;
+      cursor: pointer;
+    }
+
+    /* Dispatch Log */
+    .dispatch-log {
+      margin-top: 15px;
+      background: #090d16;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 11px;
+      max-height: 140px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .log-item {
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .log-item.sms { color: var(--accent-cyan); }
+    .log-item.call { color: var(--accent-yellow); }
+    .log-item.crit { color: var(--accent-red); font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="title-group">
+      <h1>CardioSense Telemetry & TinyML Anomaly Monitor</h1>
+      <p>Distributed Two-Node Wearable: Slap-Band (Wrist) + Locket Hub (Sternum)</p>
+    </div>
+    <div class="status-badge">
+      <div class="status-dot" id="system-dot"></div>
+      <span id="system-status">BLE Synced (20 Hz) | TinyML Online</span>
+    </div>
+  </header>
+
+  <!-- Interactive Scenario Controller -->
+  <div class="scenario-bar">
+    <span>Simulate Physiological Condition:</span>
+    <button class="btn active" id="btn-rest" onclick="setScenario('rest')">1. Resting Baseline</button>
+    <button class="btn" id="btn-exercise" onclick="setScenario('exercise')">2. Jogging / Exercise (Motion Rejection)</button>
+    <button class="btn btn-danger" id="btn-precursor" onclick="setScenario('precursor')">3. Sudden Cardiac Arrest Precursor</button>
+    <button class="btn" id="btn-artifact" onclick="setScenario('artifact')">4. Loose Sensor Motion Jiggle</button>
+  </div>
+
+  <div class="dashboard-grid" style="margin-top: 20px;">
+    
+    <!-- LEFT COLUMN: Waveforms & Vitals -->
+    <div class="left-col">
+      <!-- Vitals Cards -->
+      <div class="vitals-cards">
+        <div class="vital-card" id="card-hr">
+          <div class="label">Heart Rate (Wrist PPG)</div>
+          <div class="val"><span id="val-hr">72</span> <span class="unit">BPM</span></div>
+          <div class="subtext" id="sub-hr">Sinus Rhythm</div>
+        </div>
+        <div class="vital-card" id="card-spo2">
+          <div class="label">Oxygen Saturation</div>
+          <div class="val"><span id="val-spo2">98</span> <span class="unit">%</span></div>
+          <div class="subtext" id="sub-spo2">Normal Perfusion</div>
+        </div>
+        <div class="vital-card" id="card-gsr">
+          <div class="label">GSR Cold Sweat</div>
+          <div class="val"><span id="val-gsr">4.2</span> <span class="unit">&mu;S</span></div>
+          <div class="subtext" id="sub-gsr">Slope: +0.02 &mu;S/m</div>
+        </div>
+        <div class="vital-card" id="card-resp">
+          <div class="label">Respiration (Chest IMU)</div>
+          <div class="val"><span id="val-resp">14.0</span> <span class="unit">BrPM</span></div>
+          <div class="subtext" id="sub-resp">Eupneic Depth</div>
+        </div>
+      </div>
+
+      <!-- Real-Time Waveform Displays -->
+      <div class="waveform-panel">
+        <div class="panel-header">
+          <h3>Wrist PPG Pulsatile Waveform (MAX30102)</h3>
+          <span class="badge">Node 1: Wrist Slap-Band</span>
+        </div>
+        <canvas id="canvas-ppg" width="800" height="90"></canvas>
+
+        <div class="panel-header" style="margin-top: 10px;">
+          <h3>Sternum Respiration & Chest Wall Motion (MPU6050)</h3>
+          <span class="badge">Node 2: Sternum Locket</span>
+        </div>
+        <canvas id="canvas-resp" width="800" height="90"></canvas>
+
+        <div class="panel-header" style="margin-top: 10px;">
+          <h3>Galvanic Skin Conductance Dynamics (GSR Cold Sweat)</h3>
+          <span class="badge">Autonomic Diaphoresis</span>
+        </div>
+        <canvas id="canvas-gsr" width="800" height="90"></canvas>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: TinyML Autoencoder & Two-Stage Emergency Subsystem -->
+    <div class="right-col">
+      <!-- TinyML Anomaly Detector Card -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <h3>On-Device TinyML Autoencoder</h3>
+          <span class="badge" id="badge-gate">Motion Gate: REST</span>
+        </div>
+
+        <div class="meter-container">
+          <div class="meter-labels">
+            <span>Reconstruction Error (MSE)</span>
+            <span id="label-mse">0.002030</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="meter-fill"></div>
+            <div class="threshold-marker" id="thresh-marker" title="Anomaly Threshold"></div>
+          </div>
+          <div class="meter-labels" style="margin-top: 4px; color: var(--text-muted);">
+            <span>Baseline: 0.002</span>
+            <span id="label-thresh">Threshold: 0.0081</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-top: 10px;">
+          <span style="color: var(--text-muted);">Calculated Risk Score:</span>
+          <span style="font-weight: 700; color: var(--accent-green);" id="val-risk">12.4%</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-top: 6px;">
+          <span style="color: var(--text-muted);">Chest Motion SVM:</span>
+          <span style="font-weight: 700;" id="val-motion">0.042 g</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-top: 6px;">
+          <span style="color: var(--text-muted);">HRV RMSSD (Autonomic):</span>
+          <span style="font-weight: 700;" id="val-hrv">46.5 ms</span>
+        </div>
+      </div>
+
+      <!-- Emergency Alert State Machine Card -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <h3>Emergency Telephony & Siren</h3>
+          <span class="badge" id="badge-alert-state">STAGE 0: SURVEILLANCE</span>
+        </div>
+
+        <div class="alert-box normal" id="alert-box">
+          <div class="alert-title" id="alert-title">Physiological Baseline Stable</div>
+          <div id="alert-desc" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
+            Unsupervised baseline surveillance active. Zero cardiac precursors detected.
+          </div>
+          <div class="countdown-timer" id="timer-display" style="display: none;">30</div>
+          <button class="btn-abort" id="btn-abort" onclick="abortAlarm()">Push-to-Cancel (False Alarm)</button>
+        </div>
+
+        <!-- SIM800L Emergency Dispatch Console -->
+        <div class="dispatch-log" id="dispatch-log">
+          <div class="log-item">[INIT] SIM800L GSM & Neo-6M GPS ready.</div>
+          <div class="log-item">[INIT] Emergency Contact: +91-98765-43210 (Caregiver/EMS)</div>
+          <div class="log-item">[INIT] Baseline calibration established at 99.0% specificity.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // State Variables
+    let scenario = "rest";
+    let hr = 72, spo2 = 98, respRate = 14, gsr = 4.2, gsrSlope = 0.02, motionSvm = 0.04, hrv = 45;
+    let alertState = "NORMAL"; // NORMAL, STAGE_1, STAGE_2, ABORTED
+    let countdown = 30;
+    let countdownInterval = null;
+    let tick = 0;
+
+    const AE_BASE_THRESHOLD = 0.008113;
+
+    // Canvas Buffers
+    const ppgCanvas = document.getElementById("canvas-ppg");
+    const respCanvas = document.getElementById("canvas-resp");
+    const gsrCanvas = document.getElementById("canvas-gsr");
+
+    const ctxPpg = ppgCanvas.getContext("2d");
+    const ctxResp = respCanvas.getContext("2d");
+    const ctxGsr = gsrCanvas.getContext("2d");
+
+    const ppgHistory = new Array(200).fill(45);
+    const respHistory = new Array(200).fill(45);
+    const gsrHistory = new Array(200).fill(45);
+
+    function setScenario(scen) {
+      scenario = scen;
+      document.querySelectorAll(".scenario-bar .btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("btn-" + scen).classList.add("active");
+
+      if (scen === "rest" && alertState === "ABORTED") {
+        resetAlertState();
+      }
+      logMessage(`[USER] Activated scenario: ${scen.toUpperCase()}`);
+    }
+
+    function logMessage(msg, cls = "") {
+      const log = document.getElementById("dispatch-log");
+      const d = document.createElement("div");
+      d.className = "log-item " + cls;
+      d.textContent = msg;
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function abortAlarm() {
+      if (alertState === "STAGE_1" || alertState === "STAGE_2") {
+        alertState = "ABORTED";
+        clearInterval(countdownInterval);
+        logMessage("[ALERT] Wearer or bystander pressed Cancel Button! Alert sequence terminated.", "sms");
+        updateAlertUI();
+      }
+    }
+
+    function resetAlertState() {
+      alertState = "NORMAL";
+      clearInterval(countdownInterval);
+      countdown = 30;
+      updateAlertUI();
+    }
+
+    function updateAlertUI() {
+      const box = document.getElementById("alert-box");
+      const title = document.getElementById("alert-title");
+      const desc = document.getElementById("alert-desc");
+      const timer = document.getElementById("timer-display");
+      const btnAbort = document.getElementById("btn-abort");
+      const badge = document.getElementById("badge-alert-state");
+
+      box.className = "alert-box " + alertState.toLowerCase();
+
+      if (alertState === "NORMAL") {
+        badge.textContent = "NORMAL: SURVEILLANCE";
+        badge.style.color = "var(--accent-green)";
+        title.textContent = "Physiological Baseline Stable";
+        desc.textContent = "Continuous on-device surveillance active. Correlated vitals within safe envelope.";
+        timer.style.display = "none";
+        btnAbort.classList.remove("active");
+        btnAbort.style.background = "#243456";
+      } else if (alertState === "STAGE_1") {
+        badge.textContent = "STAGE 1: PRE-ALERT";
+        badge.style.color = "var(--accent-yellow)";
+        title.textContent = "PRE-ARREST ANOMALY DETECTED!";
+        desc.textContent = "Pulsing haptic motor & piezo alert active. 30s cancellation window to prevent false alarm:";
+        timer.style.display = "block";
+        timer.textContent = countdown;
+        btnAbort.classList.add("active");
+        btnAbort.style.background = "var(--accent-yellow)";
+      } else if (alertState === "STAGE_2") {
+        badge.textContent = "STAGE 2: ESCALATED!";
+        badge.style.color = "var(--accent-red)";
+        title.textContent = "STAGE 2 EMERGENCY DISPATCHED";
+        desc.textContent = "High-decibel siren active! Emergency SMS & Automated Telephony Call in progress.";
+        timer.style.display = "none";
+        btnAbort.classList.remove("active");
+        btnAbort.style.background = "#243456";
+      } else if (alertState === "ABORTED") {
+        badge.textContent = "ALARM ABORTED";
+        badge.style.color = "var(--accent-cyan)";
+        title.textContent = "Alarm Aborted by Wearer";
+        desc.textContent = "Bystander confirmed consciousness. Event recorded in clinical log. Resuming monitoring.";
+        timer.style.display = "none";
+        btnAbort.classList.remove("active");
+        btnAbort.style.background = "#243456";
+      }
+    }
+
+    function triggerStage1() {
+      if (alertState === "NORMAL") {
+        alertState = "STAGE_1";
+        countdown = 30;
+        updateAlertUI();
+        logMessage("[ALERT] Stage 1 Pre-Alert triggered! Starting 30s cancellation window...", "crit");
+
+        countdownInterval = setInterval(() => {
+          countdown--;
+          document.getElementById("timer-display").textContent = countdown;
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            triggerStage2();
+          }
+        }, 1000);
+      }
+    }
+
+    function triggerStage2() {
+      alertState = "STAGE_2";
+      updateAlertUI();
+
+      // SIM800L Dispatches
+      logMessage("==================================================", "crit");
+      logMessage("[CRITICAL] STAGE 1 COUNTDOWN EXPIRED! ESCALATING TO STAGE 2!", "crit");
+      logMessage("[GSM-SMS] Sending Location-Tagged Emergency SMS...", "sms");
+      const sms = `EMERGENCY: CardioSense Pre-Arrest Risk Alert!\nPatient #1 Vitals: HR=${hr.toFixed(0)}bpm, SpO2=${spo2.toFixed(0)}%, Resp=${respRate.toFixed(0)}brpm, GSR_Slope=+${gsrSlope.toFixed(1)}uS/m\nMap: https://maps.google.com/?q=12.9716,77.5946`;
+      logMessage(`[SMS-OUT] -> ${sms}`, "sms");
+      logMessage("[GSM-CALL] Dialing Caregiver: ATD+919876543210; ...", "call");
+      logMessage("[GSM-CALL] Call Connected! Transmitting DTMF Emergency Siren Tones...", "call");
+    }
+
+    // Main Simulation Loop (20 Hz)
+    setInterval(() => {
+      tick++;
+
+      // Update Physiological Models
+      if (scenario === "rest") {
+        hr = 70 + 3 * Math.sin(tick / 20) + (Math.random() - 0.5) * 2;
+        spo2 = 98.2 + (Math.random() - 0.5) * 0.4;
+        respRate = 14 + 1.2 * Math.sin(tick / 35);
+        gsr = 4.2 + 0.1 * Math.sin(tick / 50);
+        gsrSlope = 0.02 + (Math.random() - 0.5) * 0.04;
+        motionSvm = 0.035 + Math.random() * 0.02;
+        hrv = 46.0 + (Math.random() - 0.5) * 4;
+      } else if (scenario === "exercise") {
+        motionSvm = 1.35 + (Math.random() - 0.5) * 0.3; // High chest motion
+        hr = 140 + 8 * Math.sin(tick / 15) + (Math.random() - 0.5) * 3;
+        spo2 = 97.0 + (Math.random() - 0.5) * 0.8; // Preserved oxygen!
+        respRate = 28 + 2 * Math.sin(tick / 20);
+        gsr = 11.5 + (tick % 100) * 0.04; // Thermal sweat
+        gsrSlope = 0.45 + (Math.random() - 0.5) * 0.1;
+        hrv = 22.0 + (Math.random() - 0.5) * 3;
+      } else if (scenario === "precursor") {
+        motionSvm = 0.04 + Math.random() * 0.02; // Sitting / collapsing! NO MOTION
+        hr = Math.min(176, 142 + (tick % 120) * 0.3 + (Math.random() - 0.5) * 4);
+        spo2 = Math.max(76, 92 - (tick % 100) * 0.18); // Plummeting SpO2
+        respRate = 37 + (Math.random() - 0.5) * 3; // Rapid shallow breathing
+        gsr = Math.min(21, 14 + (tick % 100) * 0.07);
+        gsrSlope = 5.4 + (Math.random() - 0.5) * 0.5; // Cold sweat surge!
+        hrv = Math.max(7, 12 - (tick % 80) * 0.06);
+      } else if (scenario === "artifact") {
+        motionSvm = 2.4 + (Math.random() - 0.5) * 0.4;
+        hr = 85 + (Math.random() - 0.5) * 20;
+        spo2 = 96.5;
+        respRate = 16;
+        gsr = 5.0;
+        gsrSlope = 0.1;
+        hrv = 38;
+      }
+
+      // Compute TinyML Autoencoder Anomaly Error
+      let mse = 0.0020;
+      if (scenario === "precursor") {
+        mse = 0.085 + Math.random() * 0.04; // Massive multi-signal divergence
+      } else if (scenario === "exercise") {
+        mse = 0.0042 + Math.random() * 0.001;
+      } else if (scenario === "artifact") {
+        mse = 0.0150 + Math.random() * 0.005;
+      }
+
+      // Motion Gating Dynamic Threshold
+      let dynamicThreshold = AE_BASE_THRESHOLD;
+      if (motionSvm > 0.40) {
+        dynamicThreshold *= (1.0 + 2.5 * (motionSvm - 0.40));
+      }
+
+      const isMotionArtifact = (motionSvm > 2.2);
+      const isAnomaly = (!isMotionArtifact) && (mse > dynamicThreshold);
+      const riskScore = Math.min(100, Math.max(0, (mse / dynamicThreshold) * 50));
+
+      // Trigger Alert if anomaly sustained
+      if (isAnomaly && alertState === "NORMAL") {
+        triggerStage1();
+      }
+
+      // Update HUD Values
+      document.getElementById("val-hr").textContent = hr.toFixed(0);
+      document.getElementById("val-spo2").textContent = spo2.toFixed(0);
+      document.getElementById("val-gsr").textContent = gsr.toFixed(1);
+      document.getElementById("val-resp").textContent = respRate.toFixed(1);
+      document.getElementById("sub-gsr").textContent = `Slope: ${gsrSlope > 0 ? "+" : ""}${gsrSlope.toFixed(2)} \u03bcS/m`;
+      document.getElementById("val-risk").textContent = riskScore.toFixed(1) + "%";
+      document.getElementById("val-motion").textContent = motionSvm.toFixed(3) + " g";
+      document.getElementById("val-hrv").textContent = hrv.toFixed(1) + " ms";
+
+      // Update Card Visual Warnings
+      const cardHr = document.getElementById("card-hr");
+      cardHr.className = "vital-card " + (hr > 150 || hr < 45 ? "critical" : hr > 115 ? "warning" : "");
+      const cardSpo2 = document.getElementById("card-spo2");
+      cardSpo2.className = "vital-card " + (spo2 < 88 ? "critical" : spo2 < 93 ? "warning" : "");
+
+      // Update TinyML Meter
+      document.getElementById("label-mse").textContent = mse.toFixed(6);
+      document.getElementById("label-thresh").textContent = `Threshold: ${dynamicThreshold.toFixed(6)}`;
+      const fillPct = Math.min(100, (mse / (dynamicThreshold * 2.5)) * 100);
+      const fillEl = document.getElementById("meter-fill");
+      fillEl.style.width = fillPct + "%";
+      fillEl.style.background = mse > dynamicThreshold ? "var(--accent-red)" : "linear-gradient(90deg, var(--accent-green), var(--accent-yellow))";
+
+      const badgeGate = document.getElementById("badge-gate");
+      if (isMotionArtifact) {
+        badgeGate.textContent = "Motion Gate: ARTIFACT REJECTED";
+        badgeGate.style.background = "rgba(255, 51, 102, 0.2)";
+        badgeGate.style.color = "var(--accent-red)";
+      } else if (motionSvm > 0.40) {
+        badgeGate.textContent = "Motion Gate: EXERCISE TOLERANT";
+        badgeGate.style.background = "rgba(255, 184, 0, 0.2)";
+        badgeGate.style.color = "var(--accent-yellow)";
+      } else {
+        badgeGate.textContent = "Motion Gate: QUIESCENT SURVEILLANCE";
+        badgeGate.style.background = "rgba(0, 240, 255, 0.1)";
+        badgeGate.style.color = "var(--accent-cyan)";
+      }
+
+      // Draw Waveforms
+      drawPPG();
+      drawResp();
+      drawGSR();
+    }, 50);
+
+    function drawPPG() {
+      // Generate synthetic dicrotic pulse
+      const phase = (tick * (hr / 60) * 0.314) % (2 * Math.PI);
+      let s = Math.sin(phase);
+      let d = 0.35 * Math.sin(phase * 2 + 0.8);
+      let val = 45 - (s > 0 ? s : 0) * 35 - (d > 0 ? d : 0) * 20 + (Math.random() - 0.5) * 3;
+
+      ppgHistory.shift();
+      ppgHistory.push(val);
+
+      ctxPpg.clearRect(0, 0, 800, 90);
+      ctxPpg.strokeStyle = (hr > 140) ? "#ff3366" : "#00f0ff";
+      ctxPpg.lineWidth = 2;
+      ctxPpg.beginPath();
+      for (let i = 0; i < 200; i++) {
+        let x = (i / 200) * 800;
+        let y = ppgHistory[i];
+        if (i === 0) ctxPpg.moveTo(x, y);
+        else ctxPpg.lineTo(x, y);
+      }
+      ctxPpg.stroke();
+    }
+
+    function drawResp() {
+      const phase = (tick * (respRate / 60) * 0.314) % (2 * Math.PI);
+      let val = 45 - Math.sin(phase) * 30 + (Math.random() - 0.5) * 4;
+
+      respHistory.shift();
+      respHistory.push(val);
+
+      ctxResp.clearRect(0, 0, 800, 90);
+      ctxResp.strokeStyle = (respRate > 30) ? "#ffb800" : "#00ff88";
+      ctxResp.lineWidth = 2;
+      ctxResp.beginPath();
+      for (let i = 0; i < 200; i++) {
+        let x = (i / 200) * 800;
+        let y = respHistory[i];
+        if (i === 0) ctxResp.moveTo(x, y);
+        else ctxResp.lineTo(x, y);
+      }
+      ctxResp.stroke();
+    }
+
+    function drawGSR() {
+      let normGsr = 75 - (gsr / 25) * 60 + (Math.random() - 0.5) * 2;
+      gsrHistory.shift();
+      gsrHistory.push(normGsr);
+
+      ctxGsr.clearRect(0, 0, 800, 90);
+      ctxGsr.strokeStyle = (gsrSlope > 3.0) ? "#ff3366" : "#e0e7ff";
+      ctxGsr.lineWidth = 2;
+      ctxGsr.beginPath();
+      for (let i = 0; i < 200; i++) {
+        let x = (i / 200) * 800;
+        let y = gsrHistory[i];
+        if (i === 0) ctxGsr.moveTo(x, y);
+        else ctxGsr.lineTo(x, y);
+      }
+      ctxGsr.stroke();
+    }
+  </script>
+</body>
+</html>
