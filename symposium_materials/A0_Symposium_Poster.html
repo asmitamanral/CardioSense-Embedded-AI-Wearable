@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CardioSense — A0 Academic Symposium Poster</title>
+  <style>
+    @page { size: A0 landscape; margin: 0; }
+    :root {
+      --pri: #0a1628;
+      --sec: #111d35;
+      --card: #142040;
+      --cyan: #00e5ff;
+      --green: #00e676;
+      --red: #ff3d71;
+      --amber: #ffab00;
+      --txt: #e8edf5;
+      --muted: #8899b4;
+      --bdr: #1e3050;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--pri);
+      color: var(--txt);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      min-height: 100vh;
+    }
+
+    /* === HEADER === */
+    header {
+      background: linear-gradient(135deg, #0d2137 0%, #162d50 100%);
+      border: 2px solid var(--bdr);
+      border-radius: 18px;
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .hdr-left h1 {
+      font-size: 34px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .hdr-left p { font-size: 15.5px; color: var(--muted); font-weight: 500; }
+    .hdr-right { text-align: right; font-size: 13.5px; line-height: 1.6; }
+    .badge {
+      display: inline-block;
+      background: rgba(0,229,255,0.12);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    /* === GRID === */
+    .poster { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 20px; flex: 1; }
+    .col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* === CARDS === */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bdr);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+    }
+    .card.red-top::before { background: linear-gradient(90deg, var(--red), var(--amber)); }
+
+    .card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 8px;
+    }
+    .card h3 { font-size: 13.5px; color: var(--green); margin-top: 2px; }
+    p, li { font-size: 13px; line-height: 1.55; color: #c0cde0; }
+    ul { padding-left: 16px; }
+    strong { color: #e0e8f4; }
+
+    /* === STATS === */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: var(--sec);
+      border-radius: 10px;
+      padding: 12px 8px;
+    }
+    .st { text-align: center; }
+    .sv { font-size: 24px; font-weight: 800; }
+    .sl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+
+    /* === DIAGRAM === */
+    .diag {
+      background: #060d1a;
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      color: #d0daf0;
+      white-space: pre-wrap;
+    }
+
+    /* === TABLES === */
+    table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    th, td { border: 1px solid var(--bdr); padding: 6px 10px; text-align: left; }
+    th { background: var(--sec); color: var(--cyan); font-weight: 600; font-size: 11px; }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--sec);
+      border: 1px solid var(--bdr);
+      border-radius: 12px;
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media print {
+      body { padding: 12px; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="hdr-left">
+    <h1>CardioSense: Dual-Node Autonomous Medical IoT Wearable for Pre-Arrest Prediction</h1>
+    <p>Zero-Adhesive Reusable Biotelemetry &bull; Syncope-Gated CPR Escalation &bull; Dry ECG + Optical PPG + Seismocardiography Fusion</p>
+  </div>
+  <div class="hdr-right">
+    <div class="badge">Track 1: Smart Healthcare &bull; Applied AI &bull; IoT</div>
+    <div><strong>Make in Silicon Ideathon</strong> &bull; IIIT Naya Raipur</div>
+    <div style="color:var(--green); margin-top:4px;">Prototype: &#8377;4,718 (~$56) &bull; Factory @10k: $33.50 &bull; Clinical Per-Use: <strong>$5.58/patient</strong></div>
+  </div>
+</header>
+
+<!-- ===================== 3-COL GRID ===================== -->
+<div class="poster">
+
+  <!-- ============ COLUMN 1: Clinical Problem & Sensing ============ -->
+  <div class="col">
+
+    <!-- Card 1.1 -->
+    <div class="card red-top">
+      <h2>1. Clinical Dilemma &amp; Motivation</h2>
+      <div class="stats">
+        <div class="st"><div class="sv" style="color:var(--red);">350,000+</div><div class="sl">Annual SCA Deaths</div></div>
+        <div class="st"><div class="sv" style="color:var(--amber);">&lt; 5%</div><div class="sl">India Survival Rate</div></div>
+        <div class="st"><div class="sv" style="color:var(--green);">15&ndash;30 min</div><div class="sl">Precursor Window</div></div>
+      </div>
+      <p><strong>The 4-Min vs. 20-Min Paradox:</strong> Irreversible anoxic brain death begins in 4 minutes, yet Indian ambulance response averages 20&ndash;40 minutes.</p>
+      <ul>
+        <li><strong>Smartwatches:</strong> Detect pulse loss <em>post-collapse</em> (biologically futile); prone to exercise false alarms; blind to respiration.</li>
+        <li><strong>Holter/ECG Patches:</strong> Wet hydrogel dries in 24&ndash;48h; causes dermatitis; &lt;15% long-term patient compliance.</li>
+        <li><strong>ZOLL LifeVest:</strong> Rents at $3,500&ndash;$4,000/month; bulky vest; impractical for ambulatory daily life.</li>
+      </ul>
+    </div>
+
+    <!-- Card 1.2 -->
+    <div class="card">
+      <h2>2. Pre-Arrest Pathophysiology</h2>
+      <p>Over 50% of out-of-hospital cardiac events exhibit multi-system warning signs 15&ndash;30 minutes before collapse:</p>
+      <div class="diag">
+[ Acute Coronary Ischemia (Na⁺/K⁺ Pump Failure) ]
+                │
+                ▼
+[ Stroke Volume Drop → MAP Collapse ]
+                │
+        ┌───────┴───────┐
+        ▼               ▼
+[ Sympathetic Storm ]   [ Pulmonary Hypoperfusion ]
+ • α₁: Vasoconstriction  • Arterial SpO₂ &lt; 88%
+ • M₃: Cold sweat surge   • Agonal tachypnea (&gt;30 BrPM)
+ • ΔGSR &gt; +3.5 µS/min     • PEP lengthens &gt;140 ms
+                           • AO recoil drops &gt;50%</div>
+    </div>
+
+    <!-- Card 1.3 -->
+    <div class="card">
+      <h2>3. Tri-Modular Sternal Pod Design</h2>
+      <p>The chest node supports <strong>three interchangeable wear modes</strong> without wet adhesives:</p>
+      <ul>
+        <li><strong>Mode 1A — Direct Skin Adhesive Dock:</strong> Reusable silicone medical dock for vigorous exercise (cycling, gym). Dry 316L stainless steel ECG contacts; no hydrogel.</li>
+        <li><strong>Mode 1B — Glue-Free Soft Sentry Cord:</strong> Elastic chest cord for elderly or sensitive skin. Zero adhesives, zero irritation.</li>
+        <li><strong>Mode 2 — Casual Clothing Clip:</strong> Clips over shirts for daily errands. 30-second finger-touch ECG on-demand via exposed contacts.</li>
+      </ul>
+      <p style="font-size:12px; color:var(--green);"><strong>Key Innovation:</strong> Dry stainless steel contacts are sanitized with 70% isopropyl alcohol wipes between hospital patients — enabling <strong>6× reuse/year</strong>.</p>
+    </div>
+
+  </div>
+
+  <!-- ============ COLUMN 2: Architecture, AI & Benchmarks ============ -->
+  <div class="col">
+
+    <!-- Card 2.1 -->
+    <div class="card">
+      <h2>4. Dual-Node System Architecture</h2>
+      <div class="diag">
+[ NODE 1: STERNAL CHEST POD ]             [ NODE 2: COMPANION PULSEBAND ]
+ • Nordic nRF5340 Dual-Core MCU            • Nordic nRF52840 / XIAO BLE
+   (128 MHz App + 64 MHz Network)          • MAX86141 Clinical Optical PPG
+ • ST LSM6DSOX 6-Axis IMU (60 µg/√Hz)      (Heart Rate + SpO₂)
+ • AD8232 / ADS1292R Dry ECG AFE           • Palmar GSR (Cold Sweat / EDA)
+ • Knowles MEMS Mic (PCG S3/S4 Sounds)    • 0.96" OLED Countdown Display
+ • 316L Stainless Steel Electrodes         • ERM Haptic Motor + Abort Button
+ • 150 mAh LiPo (15g, 6.8mm)              • 240 mAh LiPo Battery
+         │                                          │
+         └────────── BLE 5.3 (20 Hz Sync) ──────────┘
+                            │
+                            ▼
+              [ 9 KB Hardware FIFO Buffer ]
+                            │
+                            ▼
+              [ Hybrid NLMS + DWT Motion DSP ]
+              (28 µs latency, &gt;28 dB rejection)
+                            │
+                            ▼
+              [ Foundation CNN-LSTM + Personalized
+                Edge Autoencoder Anomaly Detection ]
+                            │
+                            ▼
+              [ Smartphone BLE Gateway ]
+              Phone handles: GPS, SMS, 911 Call,
+              Hospital EHR Data Stream</div>
+    </div>
+
+    <!-- Card 2.2 -->
+    <div class="card">
+      <h2>5. Edge AI &amp; Motion-Gated Intelligence</h2>
+      <h3>Dual-Layer AI Architecture</h3>
+      <ul>
+        <li><strong>Foundation Layer:</strong> CNN-LSTM pre-trained on &gt;40,000 hospital cases for universal ischemic physics (PEP lengthening, AO recoil collapse, ST-segment drift).</li>
+        <li><strong>Personalization Layer:</strong> On-device unsupervised Autoencoder adapts to each wearer's 24h resting baseline, eliminating individual false alarms.</li>
+      </ul>
+      <h3>Hybrid Motion Denoising Pipeline</h3>
+      <div class="diag">
+Motion Detected (|a| &gt; 0.2g)?
+  ├─ YES → NLMS Adaptive Filter (wrist IMU reference
+  │         subtracts footstrike shockwaves)
+  │         + DWT Wavelet (strips muscle tremor)
+  │         → Clean cardiac waveforms extracted
+  │         → 28 µs latency, 38 µW, &gt;28 dB SNR gain
+  │
+  └─ NO  → Direct sensor feed (no filtering needed)</div>
+      <h3>Key Biomarkers Extracted</h3>
+      <p style="font-size:12px;"><code>PEP (Pre-Ejection Period) | AO Recoil Amplitude | ST-Segment Drift | HRV-RMSSD | SpO₂ | Resp Rate | GSR Slope | Motion SVM</code></p>
+    </div>
+
+    <!-- Card 2.3 -->
+    <div class="card">
+      <h2>6. Silicon Compute &amp; Validation Metrics</h2>
+      <table>
+        <thead><tr><th>Parameter</th><th>Benchmark</th><th>Silicon Context</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MCU Active Power</strong></td><td style="color:var(--green); font-weight:700;">1.64 mA @ 128 MHz</td><td>nRF5340 App Core (ARM Cortex-M33)</td></tr>
+          <tr><td><strong>Deep Sleep Current</strong></td><td style="color:var(--green); font-weight:700;">1.5 µA System ON</td><td>FIFO watermark wakeup between samples</td></tr>
+          <tr><td><strong>Inference Latency</strong></td><td style="color:var(--amber); font-weight:700;">&lt; 42 ms per beat</td><td>Foundation CNN-LSTM + Autoencoder</td></tr>
+          <tr><td><strong>DSP Denoising</strong></td><td style="color:var(--cyan); font-weight:700;">28 µs / 38 µW</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
+          <tr><td><strong>Noise Rejection</strong></td><td style="color:var(--cyan); font-weight:700;">&gt; 28 dB SNR gain</td><td>Footstrike + muscle tremor suppression</td></tr>
+          <tr><td><strong>BLE Telemetry</strong></td><td style="color:var(--green); font-weight:700;">&lt; 10 ms packet</td><td>Encrypted 128-bit priority payload</td></tr>
+          <tr><td><strong>Battery Recharge</strong></td><td style="color:var(--cyan); font-weight:700;">7-Day Duty Cycle</td><td>Dual magnetic pogo-pin dock, &lt;45 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- ============ COLUMN 3: Escalation, Cost, Impact ============ -->
+  <div class="col">
+
+    <!-- Card 3.1 -->
+    <div class="card red-top">
+      <h2>7. Syncope-Gated Emergency Escalation</h2>
+      <div class="diag">
+[ Anomaly Detected (PEP &gt;140ms, AO Drop &gt;50%,
+  GSR Surge, SpO₂ &lt; 88% — AT REST) ]
+                   │
+                   ▼
+┌──────────────────────────────────────────────────┐
+│ STAGE 1: 30-SECOND LOCAL PRE-ALERT               │
+│  • Wrist haptic pulsing + Yellow OLED countdown   │
+│  • Physical 2.0s hold-to-cancel button            │
+└──────────────────────┬───────────────────────────┘
+                       │
+        ┌──────────────┴──────────────┐
+        ▼                             ▼
+[ FALL DETECTED?               [ NO FALL ]
+  |a| &gt; 3.0g + Stillness ]     Button remains active
+  CANCEL BUTTON LOCKED OUT      User can abort
+  (Unconscious protection)      false alarms
+        │                             │
+        └──────────────┬──────────────┘
+                       │ (Uncancelled after 30s)
+                       ▼
+┌──────────────────────────────────────────────────┐
+│ STAGE 2: BLE PRIORITY DISPATCH TO PHONE           │
+│  • Location-tagged emergency SMS to family         │
+│  • Automated 911/112 voice call                    │
+│  • 30s ECG/SCG buffer streamed to hospital EHR     │
+└──────────────────────┬───────────────────────────┘
+                       │
+        ┌──────────────┴──────────────┐
+        ▼                             ▼
+[ SYNCOPE CONFIRMED:           [ PATIENT CONSCIOUS:
+  Horizontal + No Pulse ]       Upright / Ambulatory ]
+  85 dB SIREN + RED LED         SUPPRESS SIREN
+  110 BPM AHA CPR Coach         Gentle wrist chime
+  "PUSH HARD AND FAST           "Sit down. Alert sent
+   IN CENTER OF CHEST!"          to your doctor."</div>
+    </div>
+
+    <!-- Card 3.2 -->
+    <div class="card">
+      <h2>8. Multi-Tier Cost Model &amp; Hospital Economics</h2>
+      <table>
+        <thead><tr><th>Tier</th><th>Scope</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Benchtop Prototype</strong></td><td>Off-the-shelf breakout modules (Robu, Evelta, Mouser)</td><td style="color:var(--amber); font-weight:700;">&#8377;4,718 (~$56)</td></tr>
+          <tr><td><strong>Factory SMT (10k units)</strong></td><td>Bare silicon ICs on 4-layer rigid-flex PCB</td><td style="color:var(--green); font-weight:700;">$33.50 (~&#8377;2,780)</td></tr>
+          <tr><td><strong>Clinical Per-Patient</strong></td><td>6× hospital reuse/year (dry SS contacts)</td><td style="color:var(--cyan); font-weight:700;">$5.58 (~&#8377;463)</td></tr>
+        </tbody>
+      </table>
+      <div class="stats" style="margin-top:8px;">
+        <div class="st"><div class="sv" style="color:var(--green);">98.1%</div><div class="sl">Savings vs Zio Patch ($300)</div></div>
+        <div class="st"><div class="sv" style="color:var(--cyan);">$116</div><div class="sl">Net Profit / Patient (RPM)</div></div>
+      </div>
+      <p style="font-size:11.5px; margin-top:4px;"><strong>Revenue Model:</strong> Medicare RPM CPT codes (99453 + 99454 + 99457) reimburse <strong>$122/patient/month</strong>. Net profit = $122 − $5.58 = <strong>+$116.42/patient</strong>. CardioSense is a <em>revenue generator</em>, not a cost center.</p>
+    </div>
+
+    <!-- Card 3.3 -->
+    <div class="card">
+      <h2>9. Clinical Beachhead &amp; Roadmap</h2>
+      <ul>
+        <li><strong>Primary Target:</strong> 30-Day Post-PCI Stent Discharges (4.3M cases/year globally). Catches early stent thrombosis and silent ischemia before catastrophic ER readmission.</li>
+        <li><strong>Secondary Target:</strong> 90-Day "Weak Heart" Waiting Gap — displaces $4,000/month ZOLL LifeVest rentals with a $5.58/patient reusable alternative.</li>
+        <li><strong>HRRP Penalty Shield:</strong> US hospitals lose up to 3% of Medicare revenue ($1.2M–$2.8M/year) for 30-day cardiac readmissions. CardioSense catches decompensation early, redirecting patients to outpatient care.</li>
+      </ul>
+      <h3>Development Roadmap</h3>
+      <ul>
+        <li><strong>Phase 1 (Current):</strong> In-silico validation + benchtop functional prototype.</li>
+        <li><strong>Phase 2:</strong> Custom 4-layer rigid-flex PCB + 3D medical-grade enclosure.</li>
+        <li><strong>Phase 3:</strong> IRB ethical clearance + pilot deployment in cardiac care centers.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div><strong>CardioSense</strong> &bull; Dual-Node Autonomous Medical IoT &bull; Zero-Adhesive Reusable Cardiac Biotelemetry</div>
+  <div>Nordic nRF5340 &bull; Dry 316L ECG &bull; Seismocardiography &bull; Clinical PPG &bull; Syncope-Gated CPR Coach</div>
+</footer>
+
+</body>
+</html>

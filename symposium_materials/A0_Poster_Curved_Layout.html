@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CardioSense — A0 Academic Poster (Curved Flow Layout)</title>
+  <style>
+    @page { size: 48in 36in landscape; margin: 0; }
+    :root {
+      --bg-deep: #1a1040;
+      --bg-mid: #251560;
+      --bg-card: #2d1a6e;
+      --teal: #00d4aa;
+      --cyan: #00c8ff;
+      --purple-light: #a78bfa;
+      --pink: #f472b6;
+      --red: #ff4466;
+      --amber: #fbbf24;
+      --green: #34d399;
+      --white: #f1f5f9;
+      --muted: #a0aec0;
+      --card-border: rgba(167,139,250,0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(160deg, #0f0a2e 0%, #1a1050 30%, #1e1260 60%, #120835 100%);
+      color: var(--white);
+      min-height: 100vh;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* ═══════════ HEADER BANNER ═══════════ */
+    .header {
+      background: linear-gradient(90deg, #2d1a6e 0%, #4c1d95 50%, #2d1a6e 100%);
+      border-bottom: 3px solid var(--teal);
+      padding: 26px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--teal), var(--cyan), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header .sub {
+      font-size: 14.5px;
+      color: var(--purple-light);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(0,212,170,0.15);
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    /* ═══════════ MAIN POSTER BODY ═══════════ */
+    .poster-body {
+      padding: 24px 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto auto auto;
+      gap: 20px;
+      position: relative;
+    }
+
+    /* ═══════════ CARDS ═══════════ */
+    .card {
+      background: rgba(45,26,110,0.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      border-radius: 16px 0 0 16px;
+    }
+    .card.teal-bar::before { background: var(--teal); }
+    .card.cyan-bar::before { background: var(--cyan); }
+    .card.pink-bar::before { background: var(--pink); }
+    .card.amber-bar::before { background: var(--amber); }
+    .card.green-bar::before { background: var(--green); }
+    .card.red-bar::before { background: var(--red); }
+
+    /* Section number badge */
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 800;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .num.t { background: var(--teal); color: #0f0a2e; }
+    .num.c { background: var(--cyan); color: #0f0a2e; }
+    .num.p { background: var(--pink); color: #0f0a2e; }
+    .num.a { background: var(--amber); color: #0f0a2e; }
+    .num.g { background: var(--green); color: #0f0a2e; }
+    .num.r { background: var(--red); color: #0f0a2e; }
+
+    .card h2 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .card h3 { font-size: 12.5px; color: var(--teal); margin: 6px 0 4px; font-weight: 700; }
+    .card p, .card li { font-size: 12px; line-height: 1.5; color: #c4d0e8; }
+    .card ul { padding-left: 14px; }
+    .card li { margin-bottom: 3px; }
+    .card strong { color: #e8edf5; }
+
+    /* ═══════════ STAT HIGHLIGHT STRIPS ═══════════ */
+    .stat-strip {
+      display: flex;
+      justify-content: space-around;
+      background: rgba(15,10,46,0.6);
+      border-radius: 10px;
+      padding: 10px 6px;
+      margin: 8px 0;
+    }
+    .stat-strip .s { text-align: center; }
+    .stat-strip .sv { font-size: 20px; font-weight: 800; }
+    .stat-strip .sl { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.3px; }
+
+    /* ═══════════ DIAGRAM BOXES ═══════════ */
+    .diag {
+      background: rgba(10,5,30,0.7);
+      border: 1px solid rgba(167,139,250,0.15);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #c8d4f0;
+      white-space: pre-wrap;
+      margin: 6px 0;
+    }
+
+    /* ═══════════ TABLES ═══════════ */
+    table { width: 100%; border-collapse: collapse; font-size: 10.5px; margin: 6px 0; }
+    th, td { border: 1px solid rgba(167,139,250,0.2); padding: 5px 8px; text-align: left; }
+    th { background: rgba(45,26,110,0.8); color: var(--cyan); font-weight: 600; font-size: 10px; }
+    td { color: #c4d0e8; }
+
+    /* ═══════════ CENTER ABSTRACT CARD ═══════════ */
+    .abstract-card {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      background: linear-gradient(135deg, rgba(76,29,149,0.6) 0%, rgba(45,26,110,0.8) 100%);
+      border: 2px solid var(--teal);
+      border-radius: 20px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 0 40px rgba(0,212,170,0.1);
+    }
+    .abstract-card h2 {
+      font-size: 17px;
+      text-align: center;
+      color: var(--teal);
+      letter-spacing: 2px;
+      border-bottom: 2px solid rgba(0,212,170,0.3);
+      padding-bottom: 8px;
+      margin-bottom: 4px;
+    }
+
+    /* ═══════════ FLOW CONNECTOR ARROWS ═══════════ */
+    .flow-arrow {
+      position: absolute;
+      color: var(--teal);
+      font-size: 28px;
+      opacity: 0.4;
+    }
+
+    /* ═══════════ SPANNING CARDS ═══════════ */
+    .span-full { grid-column: 1 / -1; }
+
+    /* ═══════════ BOTTOM METRICS BAR ═══════════ */
+    .bottom-bar {
+      background: linear-gradient(90deg, #2d1a6e 0%, #4c1d95 50%, #2d1a6e 100%);
+      border-top: 3px solid var(--teal);
+      padding: 16px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bottom-bar .metric {
+      text-align: center;
+      flex: 1;
+    }
+    .bottom-bar .mv { font-size: 22px; font-weight: 800; }
+    .bottom-bar .ml { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+    .bottom-bar .divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(167,139,250,0.3);
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ HEADER BANNER ══════════════════ -->
+<div class="header">
+  <div>
+    <h1>CardioSense</h1>
+    <div class="sub">Dual-Node Autonomous Medical IoT Wearable for Pre-Arrest Cardiac Prediction</div>
+    <div class="sub" style="color:#c4d0e8; font-size:12.5px;">Zero-Adhesive Reusable Biotelemetry &bull; Syncope-Gated CPR Escalation &bull; Dry ECG + Optical PPG + Seismocardiography Fusion</div>
+  </div>
+  <div class="header-right">
+    <div class="tag">Track 1: Smart Healthcare &bull; Applied AI &bull; IoT</div>
+    <div style="color:var(--purple-light);"><strong>Make in Silicon Ideathon</strong> &bull; IIIT Naya Raipur</div>
+    <div style="color:var(--green); margin-top:3px; font-size:12px;">Prototype: &#8377;4,718 &bull; Factory: $33.50 &bull; Clinical: <strong>$5.58/patient</strong></div>
+  </div>
+</div>
+
+<!-- ══════════════════ MAIN POSTER GRID ══════════════════ -->
+<div class="poster-body">
+
+  <!-- ══════ ROW 1 LEFT: The Lethal Problem ══════ -->
+  <div class="card red-bar">
+    <h2><span class="num r">1</span> The Lethal Problem</h2>
+    <div class="stat-strip">
+      <div class="s"><div class="sv" style="color:var(--red);">350K+</div><div class="sl">Annual SCA Deaths</div></div>
+      <div class="s"><div class="sv" style="color:var(--amber);">&lt;5%</div><div class="sl">India Survival</div></div>
+      <div class="s"><div class="sv" style="color:var(--green);">15–30m</div><div class="sl">Precursor Window</div></div>
+    </div>
+    <p><strong>The 4-Min vs 20-Min Paradox:</strong> Irreversible anoxic brain death begins in 4 minutes of cardiac arrest. Indian ambulance response averages 20–40 minutes.</p>
+    <h3>Why Hasn't This Been Solved?</h3>
+    <ul>
+      <li><strong>Smartwatches:</strong> Detect pulse loss <em>post-collapse</em> — biologically futile. Blind to respiration.</li>
+      <li><strong>Holter/ECG Patches:</strong> Wet hydrogel dries in 24–48h. Contact dermatitis. &lt;15% long-term compliance.</li>
+      <li><strong>ZOLL LifeVest:</strong> $3,500–$4,000/month rental. Bulky, impractical for daily life.</li>
+    </ul>
+  </div>
+
+  <!-- ══════ ROW 1 CENTER: ABSTRACT / ARCHITECTURE (Spanning) ══════ -->
+  <div class="abstract-card">
+    <h2>&#9829; System Architecture</h2>
+    <div class="diag">
+┌─────────────────────────────┐        ┌─────────────────────────────┐
+│   STERNAL CHEST POD          │        │   COMPANION PULSEBAND        │
+│                              │        │                              │
+│  ▸ Nordic nRF5340 Dual-Core  │        │  ▸ Nordic nRF52840 BLE SoC   │
+│    (128 MHz AI + 64 MHz BLE) │        │  ▸ MAX86141 Clinical PPG     │
+│  ▸ LSM6DSOX IMU (60 µg/√Hz) │        │    (Heart Rate + SpO₂)       │
+│    → Seismocardiography (AO) │        │  ▸ Palmar GSR (Cold Sweat)   │
+│    → Respiration (0.1–0.5Hz) │        │  ▸ 0.96" OLED Countdown      │
+│    → Fall Detection (&gt;3.0g)  │        │  ▸ ERM Haptic + Cancel Btn   │
+│  ▸ AD8232 Dry ECG AFE        │        │  ▸ 240 mAh LiPo Battery      │
+│    (316L Stainless Contacts) │        │                              │
+│  ▸ Knowles MEMS Mic (PCG)    │        │  [ Self-Fitting Silicone     │
+│  ▸ 150 mAh LiPo (15g)       │        │    Wristband ]               │
+│                              │        │                              │
+│  [ Tri-Modal Wear:           │        └──────────────┬──────────────┘
+│    Adhesive / Cord / Clip ]  │                       │
+└──────────────┬───────────────┘                       │
+               │            BLE 5.3 (20 Hz)            │
+               └───────────────────────────────────────┘
+                               │
+                               ▼
+                   [ Smartphone BLE Gateway ]
+                   GPS · SMS · 911 Call · EHR</div>
+    <p style="font-size:11.5px; text-align:center; color:var(--teal);"><strong>8 Biomarkers Extracted:</strong> PEP &bull; AO Recoil &bull; ST-Drift &bull; HRV-RMSSD &bull; SpO₂ &bull; Resp Rate &bull; GSR Slope &bull; Motion SVM</p>
+  </div>
+
+  <!-- ══════ ROW 1 RIGHT: Biological Warning Signs ══════ -->
+  <div class="card pink-bar">
+    <h2><span class="num p">3</span> Pre-Arrest Warning Signs</h2>
+    <p>Over 50% of cardiac events emit multi-system warnings <strong>15–30 minutes before collapse</strong>:</p>
+    <div class="diag">
+[ Coronary Ischemia ]
+  → Na⁺/K⁺ pump failure
+  → Ventricular contractility drops
+        │
+  ┌─────┴─────┐
+  ▼           ▼
+CARDIAC:    AUTONOMIC:
+• PEP &gt;140ms  • Cold sweat surge
+• AO drop&gt;50% • GSR &gt;+3.5 µS/min
+• ST drift    • SpO₂ &lt; 88%
+• HRV crash   • Agonal gasping
+              • ALL AT REST</div>
+    <p style="font-size:11px; margin-top:4px;"><strong>Key Insight:</strong> These signals occur while the patient is <em>physically still</em> — distinguishing true crisis from exercise.</p>
+  </div>
+
+  <!-- ══════ ROW 2 LEFT: Zero-Glue Mechanics ══════ -->
+  <div class="card green-bar">
+    <h2><span class="num g">4</span> Tri-Modal Zero-Glue Mechanics</h2>
+    <h3>316L Surgical Stainless Steel Dry Electrodes</h3>
+    <p>Same hypoallergenic alloy used in hip implants. No hydrogel. Sanitized between patients with 70% IPA wipes → <strong>6× hospital reuse/year</strong>.</p>
+    <h3>Three Interchangeable Wear Modes</h3>
+    <ul>
+      <li><strong>Mode 1A — Adhesive Dock:</strong> Reusable medical silicone for vigorous exercise (gym, cycling).</li>
+      <li><strong>Mode 1B — Soft Sentry Cord:</strong> Elastic chest cord for elderly or sensitive skin. Zero adhesives.</li>
+      <li><strong>Mode 2 — Clothing Clip:</strong> Clips over shirts for daily errands. 30s finger-touch ECG on demand.</li>
+    </ul>
+  </div>
+
+  <!-- ══════ ROW 2 CENTER: Edge AI ══════ -->
+  <div class="card cyan-bar">
+    <h2><span class="num c">5</span> Edge AI &amp; Motion Denoising</h2>
+    <h3>Dual-Layer AI Architecture</h3>
+    <ul>
+      <li><strong>Foundation CNN-LSTM:</strong> Pre-trained on &gt;40,000 hospital ICU cases for universal ischemic physics recognition.</li>
+      <li><strong>Personal Autoencoder:</strong> Adapts to each wearer's 24-hour resting baseline on-device. Anomaly = reconstruction failure.</li>
+    </ul>
+    <h3>Hybrid Motion Denoising (NLMS + DWT)</h3>
+    <p>Wrist IMU captures walking rhythm → algorithm subtracts footstrike shockwaves from chest cardiac signals (like noise-cancelling headphones for the heart).</p>
+    <div class="stat-strip">
+      <div class="s"><div class="sv" style="color:var(--cyan);">28 µs</div><div class="sl">DSP Latency</div></div>
+      <div class="s"><div class="sv" style="color:var(--green);">&gt;28 dB</div><div class="sl">Noise Rejection</div></div>
+      <div class="s"><div class="sv" style="color:var(--amber);">38 µW</div><div class="sl">DSP Power</div></div>
+    </div>
+    <p style="font-size:11px;"><strong>100% Offline:</strong> All inference on nRF5340's 128 MHz core. Zero cloud. Complete biometric privacy.</p>
+  </div>
+
+  <!-- ══════ ROW 2 RIGHT: Emergency Escalation ══════ -->
+  <div class="card red-bar">
+    <h2><span class="num r">6</span> Syncope-Gated Emergency Escalation</h2>
+    <div class="diag">
+[ Anomaly Detected AT REST ]
+            │
+            ▼
+  ┌──────────────────────────┐
+  │ STAGE 1: 30s PRE-ALERT   │
+  │ Haptic + OLED Countdown   │
+  │ 2.0s Hold-to-Cancel Btn   │
+  └────────────┬─────────────┘
+       ┌───────┴───────┐
+       ▼               ▼
+  FALL DETECTED?    NO FALL
+  (&gt;3.0g+still)    Button active
+  BUTTON LOCKED     User can abort
+       │               │
+       └───────┬───────┘
+               │ (30s expired)
+               ▼
+  ┌──────────────────────────┐
+  │ STAGE 2: PHONE DISPATCH   │
+  │ GPS SMS + 911 Call + EHR   │
+  └────────────┬─────────────┘
+       ┌───────┴───────┐
+       ▼               ▼
+  UNCONSCIOUS:      CONSCIOUS:
+  85 dB SIREN       MUTE SIREN
+  110 BPM CPR       Quiet SMS
+  Voice Coach       to doctor</div>
+  </div>
+
+  <!-- ══════ ROW 3: FULL WIDTH — Silicon Compute + Competitor Table ══════ -->
+  <div class="card teal-bar span-full" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+    <!-- Left: Silicon Metrics -->
+    <div>
+      <h2><span class="num t">7</span> Silicon Compute &amp; Validation</h2>
+      <table>
+        <thead><tr><th>Parameter</th><th>Benchmark</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td>MCU Active Current</td><td style="color:var(--green); font-weight:700;">1.64 mA</td><td>nRF5340 App Core @ 128 MHz</td></tr>
+          <tr><td>Deep Sleep Current</td><td style="color:var(--green); font-weight:700;">1.5 µA</td><td>System ON, FIFO watermark wakeup</td></tr>
+          <tr><td>AI Inference Latency</td><td style="color:var(--amber); font-weight:700;">&lt;42 ms / beat</td><td>CNN-LSTM + Autoencoder combined</td></tr>
+          <tr><td>Motion DSP Pipeline</td><td style="color:var(--cyan); font-weight:700;">28 µs / 38 µW</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
+          <tr><td>Battery Duty Cycle</td><td style="color:var(--green); font-weight:700;">7-Day Runtime</td><td>Magnetic dock recharge &lt;45 min</td></tr>
+          <tr><td>BLE Dispatch Latency</td><td style="color:var(--cyan); font-weight:700;">&lt;10 ms</td><td>Encrypted 128-bit priority packet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right: Competitor Table -->
+    <div>
+      <h2><span class="num a">8</span> Head-to-Head Competitor Comparison</h2>
+      <table>
+        <thead><tr><th>Feature</th><th style="color:var(--teal);">CardioSense</th><th>Apple Watch</th><th>Zio Patch</th><th>ZOLL LifeVest</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Detection Timing</strong></td><td style="color:var(--green);">Pre-Arrest (15–30 min before)</td><td style="color:var(--red);">Post-Arrest</td><td style="color:var(--amber);">Rhythm only</td><td style="color:var(--amber);">Rhythm only</td></tr>
+          <tr><td><strong>Skin Adhesive</strong></td><td style="color:var(--green);">None (Dry SS)</td><td>None</td><td style="color:var(--red);">Wet Hydrogel</td><td>None (Vest)</td></tr>
+          <tr><td><strong>SCG + Respiration</strong></td><td style="color:var(--green);">&#10003;</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td></tr>
+          <tr><td><strong>Bystander CPR Coach</strong></td><td style="color:var(--green);">&#10003; 110 BPM</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td></tr>
+          <tr><td><strong>Fall Lockout</strong></td><td style="color:var(--green);">&#10003; &gt;3.0g Lock</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td><td style="color:var(--red);">&#10007;</td></tr>
+          <tr><td><strong>Cost / Patient</strong></td><td style="color:var(--green); font-weight:700;">$5.58</td><td>$400–800</td><td style="color:var(--red);">$300</td><td style="color:var(--red);">$4,000/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- ══════ ROW 4: FULL WIDTH — Cost Model + Roadmap ══════ -->
+  <div class="card amber-bar span-full" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+
+    <!-- Cost BOM -->
+    <div>
+      <h2><span class="num a">9</span> Multi-Tier Cost Model</h2>
+      <table>
+        <thead><tr><th>Tier</th><th>Scope</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Benchtop Prototype</strong></td><td>Off-shelf modules (Robu, Evelta)</td><td style="color:var(--amber); font-weight:700;">&#8377;4,718 (~$56)</td></tr>
+          <tr><td><strong>Factory SMT @10K</strong></td><td>Bare ICs on 4-layer rigid-flex PCB</td><td style="color:var(--green); font-weight:700;">$33.50 (~&#8377;2,780)</td></tr>
+          <tr><td><strong>Clinical Per-Patient</strong></td><td>6× hospital reuse / year</td><td style="color:var(--cyan); font-weight:700;">$5.58 (~&#8377;463)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px; margin-top:6px;"><strong>98.1% cheaper</strong> than Zio Patch ($300). <strong>99.9% cheaper</strong> than ZOLL LifeVest ($4,000/mo).</p>
+    </div>
+
+    <!-- Hospital Revenue -->
+    <div>
+      <h2><span class="num g">10</span> Hospital Revenue Model</h2>
+      <div class="stat-strip">
+        <div class="s"><div class="sv" style="color:var(--green);">$122</div><div class="sl">RPM Reimbursement<br/>Per Patient / Month</div></div>
+        <div class="s"><div class="sv" style="color:var(--cyan);">$116</div><div class="sl">Net Profit<br/>Per Patient</div></div>
+      </div>
+      <p style="font-size:11px;">Medicare RPM CPT codes (99453 + 99454 + 99457) reimburse $122/patient/month. Net = $122 − $5.58 = <strong>+$116.42 profit</strong>. CardioSense is a <em>revenue generator</em>, not a cost center.</p>
+      <p style="font-size:11px; margin-top:4px;"><strong>HRRP Shield:</strong> Hospitals avoid up to <strong>$2.8M/year</strong> in Medicare penalties for cardiac readmissions.</p>
+    </div>
+
+    <!-- Roadmap -->
+    <div>
+      <h2><span class="num c">11</span> Clinical Beachhead &amp; Roadmap</h2>
+      <h3>Primary: 30-Day Post-PCI Stent Monitoring</h3>
+      <p style="font-size:11px;">4.3M PCI procedures/year globally. Catches early stent thrombosis before catastrophic ER readmission.</p>
+      <h3>Secondary: 90-Day Weak Heart Gap</h3>
+      <p style="font-size:11px;">Displaces $4,000/month ZOLL LifeVest rentals for ICD waiting-list patients.</p>
+      <h3>Development Phases</h3>
+      <ul style="font-size:11px;">
+        <li><strong>Phase 1:</strong> In-silico validation + benchtop prototype</li>
+        <li><strong>Phase 2:</strong> Custom rigid-flex PCB + 3D enclosure</li>
+        <li><strong>Phase 3:</strong> IRB clearance + elderly care pilot</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════════════ BOTTOM METRICS BAR ══════════════════ -->
+<div class="bottom-bar">
+  <div class="metric"><div class="mv" style="color:var(--red);">350K+</div><div class="ml">Annual SCA Deaths</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--amber);">4 Minutes</div><div class="ml">Brain Death Clock</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--teal);">15–30 Min</div><div class="ml">Precursor Window</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--cyan);">1.5 µA Sleep</div><div class="ml">Ultra-Low Power</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--green);">28 µs DSP</div><div class="ml">Motion Denoising</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--green);">7-Day Battery</div><div class="ml">Continuous Wear</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--pink);">$5.58</div><div class="ml">Per Patient Cost</div></div>
+  <div class="divider"></div>
+  <div class="metric"><div class="mv" style="color:var(--green);">+$116</div><div class="ml">Hospital Profit / Patient</div></div>
+</div>
+
+</body>
+</html>
