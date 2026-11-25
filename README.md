@@ -1,13 +1,13 @@
 # CardioSense: Autonomous Sternal Sentry
 ### A Distributed Two-Node Embedded AI Wearable for Pre-Arrest Cardiac Anomaly Detection via Multi-Modal Sensor Fusion and Motion-Gated Edge Inference
 
-[![MakeInSilicon 2026](https://img.shields.io/badge/Event-MakeInSilicon%202026-critical.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
-[![Registration ID: 27198](https://img.shields.io/badge/Registration%20ID-27198-blue.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
-[![Track 1: Smart Innovation in AI with Embedded Platform](https://img.shields.io/badge/Track%201-Smart%20Innovation%20in%20AI%20with%20Embedded%20Platform-informational.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
-[![Institution: DSPM IIIT Naya Raipur](https://img.shields.io/badge/Affiliation-DSPM%20IIIT%20Naya%20Raipur-green.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/)
-[![Team: Code Blue](https://img.shields.io/badge/Team-Code%20Blue-red.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
-[![Vivado Silicon Verification](https://img.shields.io/badge/Vivado%20RTL-2%2C064%2F2%2C064%20Matched-brightgreen.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
-[![Simulated Checks](https://img.shields.io/badge/Simulation-77%2F77%20Passed-brightgreen.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/simulation/test_simulator.py)
+[![MakeInSilicon 2026](https://img.shields.io/badge/Event-MakeInSilicon%202026-critical.svg)](./symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
+[![Registration ID: 27198](https://img.shields.io/badge/Registration%20ID-27198-blue.svg)](./docs/ideathon_abstract_and_proposal.md)
+[![Track 1: Smart Innovation in AI with Embedded Platform](https://img.shields.io/badge/Track%201-Smart%20Innovation%20in%20AI%20with%20Embedded%20Platform-informational.svg)](./docs/ideathon_abstract_and_proposal.md)
+[![Institution: DSPM IIIT Naya Raipur](https://img.shields.io/badge/Affiliation-DSPM%20IIIT%20Naya%20Raipur-green.svg)](./)
+[![Team: Code Blue](https://img.shields.io/badge/Team-Code%20Blue-red.svg)](./docs/ideathon_abstract_and_proposal.md)
+[![Vivado Silicon Verification](https://img.shields.io/badge/Vivado%20RTL-2%2C064%2F2%2C064%20Matched-brightgreen.svg)](./symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
+[![Simulated Checks](https://img.shields.io/badge/Simulation-77%2F77%20Passed-brightgreen.svg)](./simulation/test_simulator.py)
 
 ---
 
@@ -31,6 +31,19 @@ Every year, sudden cardiac arrest (SCA) claims an estimated **5 to 7 lakh lives 
 6. **Zero-Glue & Gentle on Skin:** Features a soft chest cord or breathable undershirt cradle with medical dry 316L stainless-steel contacts, eliminating the medical adhesive-related skin injuries (MARSI) that affect **~16% of hospital inpatients** (Journal of Tissue Viability, 2024 meta-analysis).
 
 ---
+
+
+---
+
+## 🖼️ Official Symposium Poster
+
+The official, high-resolution vector poster presented at the **International Symposium on Enabling Indigenous Semiconductor Infrastructure (MakeInSilicon 2026)** is published directly in this repository:
+
+* 📄 **Direct File Link:** [**symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf**](./symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
+* **Symposium:** MakeInSilicon 2026 (13–15 November 2026)
+* **Registration ID:** 27198
+* **Authors:** Nikhil Gavel, Asmita Manral, Gautam Batra (Team Code Blue · CSE, IIIT Naya Raipur)
+* **Comprehensive Study & Defense Handbook:** [**Sternal_Sentry_Study_and_Defence_Handbook.pdf**](./symposium_materials/Sternal_Sentry_Study_and_Defence_Handbook.pdf) (73 Pages, 12 Topics)
 
 ## 📊 Grounded Evidence & Verified Specifications
 
@@ -155,7 +168,7 @@ CardioSense/
 ## 🚀 Quick Start & How to Run
 
 ### 1. Interactive Web Simulator & Visual Telemetry
-Open [`simulation/dashboard.html`](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/simulation/dashboard.html) in Google Chrome, Microsoft Edge, or any modern web browser:
+Open [`simulation/dashboard.html`](./simulation/dashboard.html) in Google Chrome, Microsoft Edge, or any modern web browser:
 * Watch synchronized live waveforms for **Wrist PPG**, **Chest IMU Respiration**, and **Galvanic Skin Response**.
 * Click **"3. Sudden Cardiac Arrest Precursor"** to trigger multi-signal autonomic collapse.
 * Watch the **TinyML Reconstruction Error** surge past the threshold, initiating the **Tier 2 (30-second Countdown)**.
