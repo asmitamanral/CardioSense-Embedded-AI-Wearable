@@ -12,8 +12,8 @@
 ---
 
 ## 👥 Authors & Team Code Blue (IIIT Naya Raipur)
-* **Asmita Manral (Team Lead)** — System Architecture, Clinical Gap Framing, Social Impact, Project Coordination & Defense Lead (`asmitamanral@gmail.com`)
-* **Nikhil Gavel** — Edge AI Architecture, 8-bit Quantized Model, Personal Baseline Adaptation, Escalation FSM & Silicon Verification
+* **Asmita Manral (Team Lead)** — System Architecture, Clinical Gap Framing, Social Impact, Project Coordination & Defense Lead (`asmitamanral@gmail.com`), Motion Denoising and Zero-Glue Mechanical Design, Edge AI Architecture and Concept Lead
+* **Nikhil Gavel** — Edge AI Architecture, 8-bit Quantized Model, Personal Baseline Adaptation, Escalation FSM & Silicon Verification, System Architecture
 * **Gautam Batra** — Hardware Engineering, Sensor Front-Ends (ECG, Bio-Z, IMU, PPG, Acoustic), Zero-Glue Mechanical Design & Motion Denoising
 
 ---
