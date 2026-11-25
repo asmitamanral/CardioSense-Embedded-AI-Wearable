@@ -5,7 +5,7 @@
 [![Registration ID: 27198](https://img.shields.io/badge/Registration%20ID-27198-blue.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
 [![Track 1: Smart Innovation in AI with Embedded Platform](https://img.shields.io/badge/Track%201-Smart%20Innovation%20in%20AI%20with%20Embedded%20Platform-informational.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
 [![Institution: DSPM IIIT Naya Raipur](https://img.shields.io/badge/Affiliation-DSPM%20IIIT%20Naya%20Raipur-green.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/)
-[![Team: Code Blue](https://img.shields.io/badge/Team-Code%20Blue-red.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/symposium_materials/Team_Symposium_Speech_Master.md)
+[![Team: Code Blue](https://img.shields.io/badge/Team-Code%20Blue-red.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/docs/ideathon_abstract_and_proposal.md)
 [![Vivado Silicon Verification](https://img.shields.io/badge/Vivado%20RTL-2%2C064%2F2%2C064%20Matched-brightgreen.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf)
 [![Simulated Checks](https://img.shields.io/badge/Simulation-77%2F77%20Passed-brightgreen.svg)](file:///c:/Users/Lenovo/OneDrive/Documents/CardioSense/simulation/test_simulator.py)
 
@@ -139,14 +139,11 @@ CardioSense/
 │   ├── simulation/simulator.py                 # ANSI CLI testbench with live physiological telemetry
 │   └── simulation/test_simulator.py            # Automated unit & integration suite (5/5 passing)
 │
-├── 06_Poster_Pitch_and_Defence/
+├── 06_Poster_and_Defence_Handbook/
 │   ├── symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf # Official MakeInSilicon Poster
-│   ├── symposium_materials/Sternal_Sentry_Study_and_Defence_Handbook.pdf    # Official 73-page handbook
-│   ├── symposium_materials/Team_Symposium_Speech_Master.md # Full 4-part balanced team pitch script
-│   ├── symposium_materials/CardioSense_Symposium_Speech_Master.pdf # Printable PDF presentation script
-│   ├── symposium_materials/CardioSense_Symposium_Study_Material.pdf# Printable PDF study & Q&A guide
-│   ├── symposium_materials/build_speech_pdf.py # ReportLab script generating the team speech PDF
-│   └── symposium_materials/build_study_material_pdf.py # ReportLab study material PDF generator
+│   ├── symposium_materials/Sternal_Sentry_Study_and_Defence_Handbook.pdf    # Official 73-page defense handbook
+│   ├── symposium_materials/CardioSense_Symposium_Study_Material.pdf         # Printable study & defense guide
+│   └── symposium_materials/build_study_material_pdf.py                      # ReportLab study guide generator
 │
 └── 07_References_and_Clinical_Compendium/
     ├── docs/comprehensive_research_compendium.md # 12-topic clinical compendium & journal citations
