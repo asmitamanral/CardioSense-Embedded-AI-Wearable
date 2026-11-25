@@ -43,11 +43,10 @@ The official, high-resolution vector poster presented at the **International Sym
 * **Symposium:** MakeInSilicon 2026 (13–15 November 2026)
 * **Registration ID:** 27198
 * **Authors:** Nikhil Gavel, Asmita Manral, Gautam Batra (Team Code Blue · CSE, IIIT Naya Raipur)
-* **Comprehensive Study & Defense Handbook:** [**Sternal_Sentry_Study_and_Defence_Handbook.pdf**](./symposium_materials/Sternal_Sentry_Study_and_Defence_Handbook.pdf) (73 Pages, 12 Topics)
 
 ## 📊 Grounded Evidence & Verified Specifications
 
-All metrics below are strictly verified and documented on the official **MakeInSilicon 2026 Symposium Poster** and **73-Page Study & Defence Handbook**:
+All metrics below are strictly verified and documented on the official **MakeInSilicon 2026 Symposium Poster**:
 
 | Metric Category | Verified Figure | Evidence Source / Benchmark |
 | :--- | :--- | :--- |
@@ -152,9 +151,8 @@ CardioSense/
 │   ├── simulation/simulator.py                 # ANSI CLI testbench with live physiological telemetry
 │   └── simulation/test_simulator.py            # Automated unit & integration suite (5/5 passing)
 │
-├── 06_Poster_and_Defence_Handbook/
+├── 06_Poster_and_Symposium_Materials/
 │   ├── symposium_materials/Autonomous_Sternal_Sentry_Official_Poster_v14.pdf # Official MakeInSilicon Poster
-│   ├── symposium_materials/Sternal_Sentry_Study_and_Defence_Handbook.pdf    # Official 73-page defense handbook
 │   ├── symposium_materials/CardioSense_Symposium_Study_Material.pdf         # Printable study & defense guide
 │   └── symposium_materials/build_study_material_pdf.py                      # ReportLab study guide generator
 │
