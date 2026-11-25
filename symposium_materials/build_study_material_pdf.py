@@ -110,9 +110,9 @@ def build_study_guide_pdf():
     # Table of DSP metrics
     dsp_data = [
         [Paragraph("<b>DSP Metric</b>", styles['TableHeader']), Paragraph("<b>CardioSense Benchmark</b>", styles['TableHeader']), Paragraph("<b>Clinical & Silicon Impact</b>", styles['TableHeader'])],
-        [Paragraph("Execution Latency", styles['TableCellBold']), Paragraph("28 microseconds / beat", styles['TableCell']), Paragraph("Executes on ARM Cortex-M33 in <0.01% duty cycle", styles['TableCell'])],
-        [Paragraph("Power Consumption", styles['TableCellBold']), Paragraph("38 microwatts", styles['TableCell']), Paragraph("Preserves 7-day battery life without heavy drain", styles['TableCell'])],
-        [Paragraph("Noise Rejection Ratio", styles['TableCellBold']), Paragraph(">28 dB SNR Improvement", styles['TableCell']), Paragraph("Extracts diagnostic AO peaks even during active walking", styles['TableCell'])],
+        [Paragraph("Execution Latency", styles['TableCellBold']), Paragraph("44,962 clock cycles / beat (<1 ms)", styles['TableCell']), Paragraph("8-bit quantized TinyML (1,538 parameters), <0.01% duty cycle", styles['TableCell'])],
+        [Paragraph("Power Consumption", styles['TableCellBold']), Paragraph("1.9 KB Flash, 1.3 KB RAM", styles['TableCell']), Paragraph("Calculated 3–4 days between charges (150 mAh pod, 240 mAh band)", styles['TableCell'])],
+        [Paragraph("Noise Rejection Ratio", styles['TableCellBold']), Paragraph("~24 dB Synthetic Rejection Gain", styles['TableCell']), Paragraph("Extracts diagnostic AO peaks even during active walking", styles['TableCell'])],
     ]
     t_dsp = Table(dsp_data, colWidths=[130, 150, 220])
     t_dsp.setStyle(TableStyle([

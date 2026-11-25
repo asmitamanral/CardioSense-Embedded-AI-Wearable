@@ -242,7 +242,7 @@
                             │
                             ▼
               [ Hybrid NLMS + DWT Motion DSP ]
-              (28 µs latency, &gt;28 dB rejection)
+              (44,962 cycles/beat, ~24 dB sim. rejection)
                             │
                             ▼
               [ Foundation CNN-LSTM + Personalized
@@ -269,7 +269,7 @@ Motion Detected (|a| &gt; 0.2g)?
   │         subtracts footstrike shockwaves)
   │         + DWT Wavelet (strips muscle tremor)
   │         → Clean cardiac waveforms extracted
-  │         → 28 µs latency, 38 µW, &gt;28 dB SNR gain
+  │         → 44,962 cycles/beat (<1 ms), ~24 dB synthetic NLMS filter gain
   │
   └─ NO  → Direct sensor feed (no filtering needed)</div>
       <h3>Key Biomarkers Extracted</h3>
@@ -285,7 +285,7 @@ Motion Detected (|a| &gt; 0.2g)?
           <tr><td><strong>MCU Active Power</strong></td><td style="color:var(--green); font-weight:700;">1.64 mA @ 128 MHz</td><td>nRF5340 App Core (ARM Cortex-M33)</td></tr>
           <tr><td><strong>Deep Sleep Current</strong></td><td style="color:var(--green); font-weight:700;">1.5 µA System ON</td><td>FIFO watermark wakeup between samples</td></tr>
           <tr><td><strong>Inference Latency</strong></td><td style="color:var(--amber); font-weight:700;">&lt; 42 ms per beat</td><td>Foundation CNN-LSTM + Autoencoder</td></tr>
-          <tr><td><strong>DSP Denoising</strong></td><td style="color:var(--cyan); font-weight:700;">28 µs / 38 µW</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
+          <tr><td><strong>DSP Denoising</strong></td><td style="color:var(--cyan); font-weight:700;"><1 ms / 44,962 cycles</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
           <tr><td><strong>Noise Rejection</strong></td><td style="color:var(--cyan); font-weight:700;">&gt; 28 dB SNR gain</td><td>Footstrike + muscle tremor suppression</td></tr>
           <tr><td><strong>BLE Telemetry</strong></td><td style="color:var(--green); font-weight:700;">&lt; 10 ms packet</td><td>Encrypted 128-bit priority payload</td></tr>
           <tr><td><strong>Battery Recharge</strong></td><td style="color:var(--cyan); font-weight:700;">7-Day Duty Cycle</td><td>Dual magnetic pogo-pin dock, &lt;45 min</td></tr>

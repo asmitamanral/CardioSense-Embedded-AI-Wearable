@@ -1,19 +1,22 @@
-# CardioSense: Two-Node Embedded AI Wearable for Pre-Arrest Cardiac Anomaly Detection
+# CardioSense: Autonomous Sternal Sentry & Two-Node Embedded AI Wearable
 
-> **Track:** Track 1 (Smart Healthcare / Applied AI / IoT)  
-> **Event:** Make in Silicon Ideathon — IIIT Naya Raipur (IIITNR)  
-> **Target BOM:** < ₹3,150 (~$37 USD) | **Architecture:** 100% Offline Edge Body Area Network (BAN)
+> **Registration ID:** 27198  
+> **Track:** Track 1: Smart Innovation in AI with Embedded Platform  
+> **Event:** MakeInSilicon 2026 Ideathon — IIIT Naya Raipur (IIITNR)  
+> **Team Code Blue:** Asmita Manral (Team Lead), Nikhil Gavel, Gautam Batra  
+> **Affiliation:** Dr. Shyama Prasad Mukherjee International Institute of Information Technology, Naya Raipur (DSPM IIITNR)  
+> **Target BOM:** ₹3,180 (~$33.50 at ₹95/$) | **Per-Patient Reuse Cost:** ~₹530 | **Architecture:** 100% Offline Edge Body Area Network (BAN)
 
 ---
 
 ## 1. Executive Summary & Clinical Problem
 
 ### The Clinical Dilemma (The 4-Minute vs. 20-Minute Paradox)
-* **Out-of-Hospital Sudden Cardiac Arrest (SCA):** Claims over 350,000 lives annually worldwide, with a survival rate below 5% in India.
-* **The Time Mismatch:** Irreversible anoxic biological brain injury begins within **4 to 6 minutes** of circulatory collapse. However, urban and rural emergency medical response times across India average **20 to 40 minutes**.
-* **Why Consumer Smartwatches Fail:** Commercial wearables (Apple Watch, Galaxy Watch) detect pulse cessation **post-collapse** (after the heart stops pumping). Alerts delivered after circulatory arrest are biologically futile. Furthermore, single-wrist wearables suffer from pervasive motion artifacts and cannot track respiration mechanics.
-* **Why Medical Holter Patches Fail:** Clinical adhesive ECG patches rely on wet hydrogel electrodes that dry out within 24–48 hours, cause contact dermatitis, and have <15% long-term patient compliance.
-* **The CardioSense Solution:** Clinical electrophysiology demonstrates that over 50% of cardiac events produce multi-system autonomic warning precursors **15 to 30 minutes before collapse**. CardioSense is engineered to exploit this window using a **zero-adhesive, two-node Body Area Network (BAN)**.
+* **Out-of-Hospital Sudden Cardiac Arrest (SCA):** Claims an estimated 500,000 to 700,000 lives annually in India, with an out-of-hospital survival rate of barely 1% to 5%.
+* **The Time Mismatch:** Irreversible anoxic biological brain injury begins within **4 to 6 minutes** of circulatory collapse. However, urban and semi-urban emergency medical response times across India average **20 to 40 minutes**.
+* **Why Consumer Smartwatches Fail:** Commercial wearables (Pixel Watch, Apple Watch) detect pulse cessation **post-collapse** (after the heart stops pumping). Alerts delivered after circulatory arrest are biologically futile. Furthermore, single-wrist wearables suffer from pervasive motion artifacts and cannot track sternal respiration mechanics or heart sounds.
+* **Why Medical Holter Patches Fail:** Clinical adhesive ECG patches rely on wet hydrogel electrodes and aggressive adhesives that dry out, cause medical adhesive-related skin injuries (MARSI) in approximately 16% of inpatients (Journal of Tissue Viability, 2024 meta-analysis), and have poor long-term compliance.
+* **The CardioSense Solution:** Clinical electrophysiology demonstrates that over 50% of cardiac victims exhibit autonomic and hemodynamic precursor signs (Oregon SUDS, Marijon et al. 2015). In India's 101 million diabetic population (ICMR-INDIAB 2023), 1 in 5 suffer from silent ischemia. CardioSense is engineered to exploit this window using an autonomous, **zero-glue, two-node Body Area Network (BAN)**.
 
 ---
 

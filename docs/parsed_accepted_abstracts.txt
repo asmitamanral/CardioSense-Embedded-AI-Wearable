@@ -1,0 +1,174 @@
+--- PAGE 1 ---
+Smart Innovation in AI with Embedded Platform
+Registration No. Authors Affiliation Abstract Title
+1 27059 Harshit Agrawal, Rishabh Bhati, Anmol Kumar Agrawal National Institute of Technology, Raipur AI-Enhanced Smart Thermal Container for Medicines
+2 27060 P. Mayank,Shubham Prajapati,Sandeepan Karmakar BSP Senior Secondary School Sector X Bhilai Spatial Perception in Extreme/Vision-Limited Areas
+3 27081 SOUMYA ASATI,Riya Kumari,   Sangini Gupta SSIPMT Safety Monitoring System
+4 27083 Prakhar Singh, Suryansh Gupta, Ojaswit Upadhyay IIIT Naya Raipur Edge AI Road Safety
+5 27085 Shivansh Dubey, Shagun Kaushik, Muskan Nayak IIIT NR AI â€œInvisible Dangerâ€ Detector
+6 27094 Prakhar Mishra, Prince Ayush Tirkey IIIT Naya raipur ClearSight Curb
+7 27125 Muddasani Siri Meenakshi Varma, K.VISHNU V ARSHITH REDDY , 
+Aishwarya Bommaganti
+DSPM IIIT Naya Raipur Adaptive Traffic Signal Optimization System
+8 27142 Gurram Akhil, Vishnu Varshith Reddy, Charan DSPM IIIT Naya Raipur Smart AI-Based Plant Care System Using an Embedded Platform
+9 27145 Gondi Nitish Chowdary, Kokkonda Jayanth Sai, Rutwik Goud DSPM IIIT Naya Raipur AI-Powered Smart Innovation Platform
+10 27147 K. Tanmayi, V . Akshara Reddy, K. Pranay Varma GITAM University, Hyderabad Intelligent AI-Enabled Embedded Systems
+11 27155 Thalari Sudhakar, Bokka Madhav Prakash, Ediga Jaswanth Goud Santhiram Engineering College AgriShield: AI-Enabled Smart Agriculture and Crop Protection Using Embedded 
+Systems
+12 27157 Aayush Kumar Maijorwar, Aditi Dubey BIT Durg SilicoGuard
+13 27167 Anandita Indurkhya, Vikas Singh Thakur, Vedant Rajwade SSIPMT Raipur Smart Microgravity Water Dispenser & Recovery System
+14 27169 Aafreen Khan, Pavani Yadav, Aarya Kakkar DSPM IIIT Naya Raipur ECHO-VOX
+15 27170 Manapadu Anshu, Sukhleen Kaur, Srishti Mandavi DSPM IIIT Naya Raipur SATTV A_AI-Assisted Multi-View Yogasana Evaluation for Fair and Transparent 
+Performance Assessment
+16 27175 Bushra Ameen, Aishani Bhatnagar Bhilai Institute of Technology, Durg SwasthAI
+17 27179 Harshit Gupta, Aryaman Majumdar, Pragya Agarwal Brilliant Public School BrillSucro – Smart Sugar Guardian
+18 27186 Aashritha Sai Vagiri, Varakala Manikanta Goud, Chintakayala Bilvika Ram Gitam University Smart Innovation in AI with Embedded Platforms
+19
+27187 Utkarsh Sharma, Shashwat Srivastava, Shiv Karnwal DSPM IIIT Naya Raipur An Embedded Edge-AI System for Early Plant Stress Detection and Temporal 
+Recovery Monitoring
+20 27189 Nidhi Ranjan, Sakshi Bhatia, Manjishtha Agrawal SSIPMT Raipur. JalCycle: Intelligent System for Floodwater Recovery and Reuse
+21
+27198 Asmita Manral, Nikhil Gavel, Gautam Batra DSPM IIIT Naya Raipur CardioSense: A Distributed Two-Node Embedded AI Wearable for Pre-Arrest Cardiac 
+Anomaly Detection via Multi-Modal Sensor Fusion and Motion-Gated Edge Inference
+22 27199 Anjali Rawat, Asmit Arya, Akriti Agrawal DSPM IIIT Naya Raipur InteliSense
+23 27215 Adarsh Ojha, Aditya Kumar Saha, Anurag Dewangan DSPM IIIT, Naya Raipur SMART VEHICLE- HUMAN AND ANIMAL DETECTION SYSTEM
+24 27216 Mohit Singh Malhotra, Madhav, Damini Divya Sori DSPM IIIT NR Ai enabled Predictive and Adaptive Street Lighting
+25 27219 Mohit Singh, Shruti Deokar, Kashish Vijay DSPM IIIT Naya Raipur BridgePulse: AI-Based Structural Monitoring
+26 27220 Kamna Baghmar, Shivani Patel,  Khyati Verma SSIPMT Raipur Siliscan: Smart Semiconductor Inspection
+27 27221 Saniya Parveen, Himanshu Bhiwgade, Chesta Kamle DSPM IIIT Naya Raipur SAFER Campus
+28 27222 Shagun Kaushik, Saransh Samuel Minj, Muskan Nayak Bhilai Institute of Technology AI-Powered Underground Mine Safety, Monitoring and Rescue System
+29 27223 Vedang Bhatt Bhilai Institute of Technology Raipur PulseTwin: Dual-Camera AI Cuffless BP estimation
+30 27226 Aviral Trivedi, Abhinav Krishna, Harshit Kushwah DSPM IIIT Naya Raipur FPGA-Based Matrix Multiplication with Adaptive GaN Power Supply
+31
+27230 SPANDAN BISWAS; Yash Sairani Krishna Public School Interantional Pulse 2.0  AI-Assisted Disaster Detection and Self-Adaptive Emergency 
+Communication System
+32 27231 Riya Kurre Columbia Professional University NetGuard: Disaster-Resilient Offline Edge-AI Surveillance
+33 27234 Avanish Kesharwani, Dev Shukla, Prakhar Singh Kushwah DSPM IIIT Naya Raipur Smart Cold-Chain Monitor
+--- PAGE 2 ---
+34 27235 Apoorv Singh, Parth Khatri DSPM IIIT Naya Raipur Verifiable Unlearning for Edge Chips
+35 27236 Agrim Thakur, Parth Meharchandani, Shaurya Jain DSPM IIIT Naya Raipur Real-time seizure or Fall detector
+36 27239 Karan Singh, Vivek Kumar, Prince Kumar Singh DSPM IIIT Naya Raipur Flood Sentinel
+37
+27241 Deepanjali Deo, Anvi Maurya, Krish Srivastava DSPM IIIT Naya Raipur ResQ Rover: A Multi-Sensor Autonomous Rover for Underground Mine Safety and 
+Emergency Response
+38 27243 Minal Sahu Krishna Public School International Non-Invasive Universal Metabolic Scanner
+39 27244 Akshit Verma, Adarsh Bedre, Prayansh Tiwari DSPM IIIT Naya Raipur ergo plus
+40 27247 Kshitij Priyadarshi, Ankit Agrahari, Aditya Mitra Bennett University Wearable embedded system for emergency detection
+41 27248 Kalash Dhiraj Kurel, Astha Soni, Chaitanya Baghel DSPM IIIT Naya Raipur Driver Drowsiness Alert System
+42 27249 Nihal Sinha; Dheeraj Kumar Patel; Yogendra Pratap Singh PM SHRI KENDRIYA VIDYALAYA NAYA 
+RAIPUR
+Smart AI-Embedded Safety System for Bench Press Using Real-Time Failure 
+Detection and Hydraulic Actuation
+43 27254 Yuvraj Gupta, Mehul Vishwakarma, Suryansh Dewangan DSPM IIIT Naya Raipur AI-Based multi sensor pcb fault detection system
+44 27257 Pranshu Pandey, Jagrit Sahu, Durga Verma Columbia Institute of Engineering And 
+Technology
+A Secure UPI Application With Enhanced Transaction Traceability And Wrong 
+Payment Recovery
+45 27260 Girish Kumar Banjari, Jyodhveer Singh, Tarun Verma CIET, Raipur, Chhattisgarh, India AI-Powered Sports Coaching Platform
+46 27265 Bhumika, Priyanka Shivare Columbia Institute of Engineering and 
+Technology
+BioGest: somatic -AI powered Cybernetic interface for zero touch navigation via 
+neural bio telemetry and voice intelligence
+47 27266 Mushkan, Bhumika Painkra, Kumkum Samrath DSPM IIIT NayaRaipur Continuous Blood Pressure Estimation
+48 27268 Shourya Punjabi, Arnav Agrawal, Sunidhi Jain DSPM IIIT Naya Raipur AI-Powered Railway Track Monitoring System
+49
+27269 Harinarayan Sahu, Sarita Verma Columbia Institute of Engineering and 
+Technology, Raipur
+Smart Helmet With Safety
+50 27279 Abhinav Singh Kashyap, Vishwesh Tiwari, Paramvir Singh Saini Shri Shankaracharya Institute of Professional 
+Management & Technology, Raipur
+AR-Based Mining Safety Training System
+51
+27280 Jagriti Verma, Anshu Dahariya, Anuj Kumar Patel Columbia Institute Of Engineering & 
+Technology, Raipur
+AiMSEF (AI-driven Multi-Agent Software Engineering Framework)
+52 27282 Mrityunjay Dubey, Subodh Kumar Sahu and Rudra Gain ssipmt raipur KisanChip
+53 27283 Niranjan singh, pratham Singh, Dhatri rawte DSPM IIIT Naya Raipur AI based embedded signal noise detector
+54 27291 Anjalle Perri, Bhumika Bajaj, Manas Roy SSIPMT, Raipur SurakshaMatri
+55 27292 Alok Raj, Alok Kumar Chaurasiya, Aakash Guru Ghasidas Vishwavidyalaya Iot-based real time conveyor belt monitoring
+56 27293 Shakina Narang, Tishu Sahu, Yashaswi Dewangan Shri Shankaracharya Institute of Professional Management and Technology (SSIPMT), RaipurEcoSentinel: A Resilient Edge-AI Environmental Intelligence Network
+57
+27299 Astha Shrivastava, K. Rohini Shri Shankaracharya Institute of Professional Management and Technology (SSIPMT), RaipurBolSaathi: An AI-Powered Personalized Speech Recognition and Communication 
+System for Individuals with Dysarthria.
+58 27300 Sakshi, Aryan, Prakash DSPM IIIT Naya Raipur Flux Sense AI
+59
+27305 Krish Chandarana, Vanya Singhvi Bhartiya Vidya Bhavan's R.K. Sarda Vidya 
+Mandir
+AI debris assessment
+60 27306 Kush Patel, Harsh Jamhle, Naitik Verma Bhartiya Vidya Bhavans R.K. Sarda Vidya 
+Mandir Raipur
+Crash Guard
+61
+27308 G. Bhargavi, Agnibala Sahu Shri Shankaracharya Technical Campus FEDERA: Federated Edge Resource-Adaptive AI for Heterogeneous Healthcare 
+Centres.
+62 27315 Jeswanth Chinta, Pardhav Sai, E Vinney SKYRA SiliconSentinel: Edge-AI Multimodal Health Monitoring for Predictive Maintenance of 
+Semiconductor Equipment
+63 27316 Saransh Dubey, Dilpreet Bhatia, Toshita Pathak Brilliant Public School Nutriovagus: A Solar-Powered AI-Enabled Smart Feeding System for Stray Animals
+64 27320 Nikhil Kumar Dubey, Aastha Tiwari ,Akshita vishen Bhilai institute of technology Tamper-Proof Linking of Offline Cash Handovers and
+65 27321 Dyutirisha Pal, Hanumanthu Kiran Aditya, Ashutosh Mukherjee DSPM IIIT Naya Raipur SenseAI: Smart Stress Detection
+--- PAGE 3 ---
+66 27325 Samarth Gudoorkar, KSK Sasank Institute of Aeronautical Engineering Smart Procurement Shelf
+67
+27326 Sahiba Ali Irani Columbia Institute Of Engineering & 
+Technology
+AI enabled Intelligent Vehicle Crash Detection and Automatic Emergency Response 
+System
+68 27336 K. Pranav Kumar Reddy, Vathumalli Sri Rama Naga Karthikeya, Shaik A 
+Aman Basha
+Vellore Institute of Technology Andhra Pradesh VISION BALLOT-DIGITAL EVMS FOR BETTER FUTURE
+AI in Circuit & Systems
+Registration No. Authors Affiliation Abstract Title
+1 27034 Aditya Singh Thakur, Devyani Dewangan, Aditya Kumar Gupta Bhilai Institute of Technology (Durg) Agentic EDA: Smart Silicon Optimization
+2 27049 Muzaffar Asim Ansari, Aniket Singha, Kanduri Abhishek ABV-IIITM Gwalior 1D-CNN Accelerator for Arrhythmia Detection
+3 27055 Mahaprasad Nayak, Bhoosithaa Selvan,    Dharshini DR MGR EDUCATIONAL AND RESEARCH INSTITUTETRACE-AI: Hardware-Assisted AI Verification
+4 27079 Kamesh Chandravanshi, Lomash Sahu, Jeetram prajapati Government engineering collage Bilaspur Low-Power Two-CMOS Operational Amplifier 180nm
+5 27087 Saurabh Sinha, Akshat Sharma DSPM IIIT Naya Raipur Vajra Drishti: FPGA-Based Autonomous Drone Tracking
+6 27122 Thomas Sajeev Varghese, Jayant Yadav, Rohan Maheshwari DSPM IIIT Naya Raipur Low-Power Neuromorphic ASIC for ECG Classification
+7 27129 Siddharth Vivek, Tejas Singh Kohli, Govind Prasad BITS Pilani, Pilani Campus Cogito: Autonomous GenAI-Driven RTL Optimization for Power, Performance, and 
+Area
+8 27144 Niti Jain, Ayush Tiwari, Abeer Gupta National Institute of Technology, Raipur Bi-MAC: A Resource-Sharing Architecture for Fixed-Point LSTM Hardware 
+Acceleration
+9 27173 Akshay bhoi Dharmsinh Desai University Topological Risk Pre-Filter for RTL
+10 27218 Daksha, Kunj Patel, Coral Rai DSPM IIIT Naya Raipur Neuromorphic Computing: Building Circuits Inspired by the Brain
+11 27229 Abhinav Bisen, Ayanna Jain DSPM IIIT Naya Raipur TrustLens: An AI-Driven framework for Explainable Hardware Trojan Detection
+12 27251 PAGALA SAI BHA V ANA; JINNA HARSHA V ARDHAN REDDY; 
+PRIYANSHU SWAIN
+GITAM Anti-sleep alert system for drivers
+13 27252 Neha, Arpit, Mehnoor AICTE AI- Based Fraud Link Detector
+14 27319 Neha Singh, Anvesha Mahendra, Suhana Naaz Shaik DSPM IIIT Naya Raipur Energy-Efficient RISC Processor Design Using Clock Gating
+15 27323 Akshat Jain, Hrishabh Vaishnav, Aayat Ansari Chhattisgarh Institute of Technology, Jagdalpur GFA-Edge X: A Geometry-Frequency Guided Adaptive FPGA Accelerator for Low-
+Power Edge Road Defect Inspection
+16 27337 Artesh Kumar Banjaree, Deepak Verma, Shashank Sinha Bhilai Institute of Technology, Durg Approximate Multipliers for Energy-Efficient AI
+17 27340 Bhavya Singhal, Darssan Perumal, Vishnu Harish Reddy GITAM University, Visakhapatnam HADaptive: An Intelligent Hardware–Software Co-Optimisation Framework for 
+Efficient AI Acceleration
+18 27341 Abhijay Choudhary, Aloukik Choudhary, Ameen Khan BSP Senior Secondary School, Sector 10, Bhilai AgriCircuit AI – AI-Integrated Electronic System for Intelligent Precision Agriculture.
+Semiconductor Devices & Nanoelectronics
+Registration No. Authors Affiliation Abstract Title
+1 27023 Maya Chandrakar DSPM IIIT Naya Raipur Fabrication-to-Performance TGV Design
+2 27066 Abhay Gupta, Chanchal Ijardar Government Engineering College, Raipur Investigation of Crack Reliability in Through Silicon Vias Using Different Insulating 
+Materials
+3 27080 Snehalatha Thimmagalla National Institute of Technology Raipur Hybrid ISFET pH Sensor with Amplification
+4 27092 Aadrit Kuthiala, Prof. Mandeep Singh NIT Hamirpur Analysis of Energy-Efficient Nanowire FET Design for Emerging AI/ML Applications
+5 27099 RAJ SINGH, Sahil Kumar,Vansh National Institute of technology Hamirpur Generation for Emerging Nanoelectronic Devices
+6 27108 Saanvi, Sanskriti Gururaj Kulkarni, Tannu Shree GITAM Deemed To Be University Hyderabaad Brain-Inspired Neuromorphic Chip
+--- PAGE 4 ---
+7 27123 Vansh, Shivansh Gautam, Rishav Kaushal National Institute of Technology Hamirpur AI-Powered Self-Calibrating Semiconductor Device for Process Variation and Aging 
+Compensation
+8 27127 Srijan Gupta, Ayush Vaibhav Gond, Vanshika Gupta Gati Shakti Vishwavidyalaya, Vadodara Using Capsulated contact separation TENG for condition monitoring of point machine 
+in the Indian Railways
+9 27160 Prithvi Nag, Ayush, Astha DSPM IIIT Naya Raipur EcoRewards: Smart Waste Managment
+10 27162 Prateek Rathi, Mehul Gitesh Agrawal DSPM IIIT Naya Raipur RV32IMC Processor with AI Accelerator
+11 27180 Samriddhi Dodeja, Akash Sharma, Dharti Gautam DSPM IIIT Naya Raipur AI-Driven TSV Defect Prediction & Localization
+12 27208 Shashi Sahani, Manish Lahri, Tribhuvan Jangde Columbia Institute of Engineering Technology design and implement an FPGA-based traffic light controller using Verilog HDL and a 
+Finite State Machine (FSM).
+13 27242 Rachit Chawla, Shanay Chawla Krishna Public School International, New Raipur Electricity Generation by  biometric wind tree with Smart Transmission Line Fault 
+Detection
+14 27246 Gautam Krishna, Nitya Gupta DSPM IIIT Naya Raipur Hydrogen cyanife gas sensor using doped/undoped graphene nanoribbon
+15 27256 Himani Sinha, Ashutosh Pathak, Yuvraj Khadka Guru Ghasidas University, Bilaspur, Chhattisgarh Design and analysis of Memtranstor Emulator
+16 27262 Dileep, Mallu Manasa, P Chandini Santhiram Engineering College Smart Waste Heat Harvesting and Wireless Charging
+17 27317 Chandana, sanjana, satya prasad NIT Raipur EDA independent PDK Framework
+18 27322 Naman Chauhan, Sumit Kumar, Shivling Swami DSPM IIIT Naya Raipur Digital Olfaction: A Cross-Reactive Nano-Chemiresistive Sensor Array with TinyML 
+for Non-Invasive TB and Pneumonia Screening Using Exhaled-Breath VOCs
+19 27324 Chandra Vikas Gunnam, KDNSP Abhi Ram GITAM Deemed to be University, Hyderabad Eco-nTEG: Battery-Free Industrial IoT Energy Harvesters
+20 27329 Sumit Hajare, Dheeraj Sabbi National Institute of Technology, Raipur A Low-Power Sense-Amplifier Comparator Chain for Implantable Pacemakers in 45 
+nm CMOS.

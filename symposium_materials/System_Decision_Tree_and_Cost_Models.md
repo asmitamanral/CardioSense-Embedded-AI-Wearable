@@ -29,7 +29,7 @@ flowchart TD
     FIFO --> MotionCheck{"Kinetic Motion Check\n(|a_wrist| or |a_chest| > 0.2g?)"}
 
     %% Motion Branch
-    MotionCheck -- "YES (Walking / Movement)" --> NLMS["Execute Hybrid DSP Pipeline (28 µs, 38 µW)\n1. NLMS Filter: Wrist IMU subtracts footstep shockwaves\n2. DWT Wavelet: Strips muscle tremor & shivering"]
+    MotionCheck -- "YES (Walking / Movement)" --> NLMS["Execute Hybrid NLMS Filter (<1 ms, 44,962 cycles)\n1. NLMS Filter: Wrist IMU subtracts footstep shockwaves\n2. DWT Wavelet: Strips muscle tremor & shivering"]
     NLMS --> CleanSig["Extract Motion-Cleaned Cardiac Waveforms\n(AO Recoil Peak, PEP, PTT, HRV, SpO2)"]
 
     MotionCheck -- "NO (Rest / Sleep / Still)" --> CleanSig
@@ -85,8 +85,8 @@ flowchart TD
                                        MCU App Core sleeps in 1.5 µA System ON state until FIFO reaches watermark.
 
   [STEP 1: MOTION-GATED DSP]       ──► Evaluates kinetic acceleration. If dynamic motion >0.2 g:
-                                       Runs 28 µs Hybrid NLMS + Discrete Wavelet Transform (DWT).
-                                       Suppresses >28 dB of footstrike shockwaves using wrist IMU reference.
+                                       Runs NLMS Adaptive Filter (<1 ms / 44,962 cycles per beat in simulation).
+                                       Demonstrates ~24 dB synthetic motion cancellation gain in simulation using wrist IMU reference.
 
   [STEP 2: PRE-INFARCTION AI]      ──► Foundational CNN-LSTM extracts:
                                        • Pre-Ejection Period (PEP = t_AO - t_Q): Pathologic lengthening (>140 ms).
@@ -140,10 +140,10 @@ c:/College/Ideathon/ (Dual-Node Wearable BAN)
 │
 ├── [3. EDGE COMPUTING, DSP & ARTIFICIAL INTELLIGENCE]
 │   ├── Decision 5: Motion Denoising ───► Option D: Hybrid NLMS Filter + Discrete Wavelet Transform
-│   │                                     • 28 µs latency per beat, 38 µW power, >28 dB noise reduction
+│   │                                     • 44,962 cycles/beat (<1 ms at 64 MHz), 1.9 KB flash, ~24 dB synthetic NLMS filter gain
 │   │                                     • Wrist IMU reference subtracts rhythmic walking shockwaves
 │   └── Decision 6: Edge AI Engine ─────► Pre-Trained Foundation + Personalized Edge Autoencoder
-│                                         • Foundation: Trained on >40,000 hospital cases for universal physics
+│                                         • Foundation: Adapted to wearer's personal resting baseline (AUROC 0.64 -> 0.80 on European ST-T DB)
 │                                         • Personalization: On-device 24h baseline adaptation eliminates false alarms
 │
 ├── [4. USER EXPERIENCE & EMERGENCY TELEMETRY]

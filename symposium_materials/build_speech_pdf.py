@@ -7,139 +7,155 @@ from reportlab.platypus import (
 from pdf_generator_base import NumberedCanvas, get_custom_styles, create_callout, DOWNLOAD_DIR
 
 def build_speech_pdf():
-    pdf_filename = os.path.join(DOWNLOAD_DIR, "CardioSense_Symposium_Speech_Master.pdf")
+    pdf_filename_local = os.path.join(r"c:\Users\Lenovo\OneDrive\Documents\CardioSense\symposium_materials", "CardioSense_Symposium_Speech_Master.pdf")
+    pdf_filename_dl = os.path.join(DOWNLOAD_DIR, "CardioSense_Symposium_Speech_Master.pdf")
+    
     doc = SimpleDocTemplate(
-        pdf_filename,
+        pdf_filename_local,
         pagesize=letter,
-        leftMargin=54,
-        rightMargin=54,
-        topMargin=54,
-        bottomMargin=54
+        leftMargin=50,
+        rightMargin=50,
+        topMargin=50,
+        bottomMargin=50
     )
     
     styles = get_custom_styles()
     story = []
 
     # Title Block
-    story.append(Paragraph("CardioSense: Symposium Complete Spoken Master Script", styles['DocTitle']))
-    story.append(Paragraph("Verbatim Stage Choreography & Speaking Delivery for Full Presentation<br/><b>Assigned Core Segments:</b> Topic 1, Topic 2, Topic 3, Topic 7, and Topic 11", styles['DocSubTitle']))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#C53030"), spaceAfter=14))
+    story.append(Paragraph("CardioSense: Official Team Pitch & Defense Script", styles['DocTitle']))
+    story.append(Paragraph("<b>MakeInSilicon 2026 Ideathon · Registration ID: 27198 · Track 1: Smart Innovation in AI with Embedded Platform</b><br/>"
+                           "<b>Team Code Blue:</b> Asmita Manral (Lead), Gautam Batra, Nikhil Gavel · DSPM IIIT Naya Raipur", styles['DocSubTitle']))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor("#C53030"), spaceAfter=12))
 
-    # Stage Instruction Callout
-    intro_text = "<b>Stage Delivery Blueprint:</b> Target cadence is approximately <b>125 to 130 words per minute</b> with deliberate, steady articulation. Never rush through the numbers—pause for exactly one full second after stating key clinical metrics to allow the jury to absorb the clinical gravity. Physical cues, poster pointing targets, and vocal inflections are highlighted in brackets."
+    # Stage Instructions Callout
+    intro_text = (
+        "<b>Stage Choreography & Presentation Protocol:</b><br/>"
+        "• <b>Total Duration:</b> 10 Minutes (~1,250 words total at 125–130 WPM cadence).<br/>"
+        "• <b>Speaker Positions:</b> Asmita stands center stage (opening and closing); Gautam stands stage right by hardware & sensor diagrams; Nikhil stands stage left by Edge AI & verification panels.<br/>"
+        "• <b>Gold Standard Articulation:</b> Deliver key figures with absolute deliberate clarity. Pause 1 full second after every clinical number.<br/>"
+        "• <b>Strict Evidence Guardrail:</b> Never claim unverified whole-device clinical sensitivity or field accuracy. Cite simulated checks (77/77), pattern match (2,064/2,064), and public dataset replays strictly."
+    )
     story.append(create_callout(intro_text, styles, bg_hex="#FFF5F5", border_hex="#FEB2B2"))
-    story.append(Spacer(1, 14))
+    story.append(Spacer(1, 10))
 
     # =========================================================================
-    # PART 1: THE OPENING HOOK (TOPIC 1)
+    # PART 1: ASMITA MANRAL - OPENING HOOK & THE LETHAL PROBLEM
     # =========================================================================
-    story.append(Paragraph("SEGMENT 1: The Lethal Problem & The Time Mismatch", styles['SpeechSpeaker']))
-    story.append(Paragraph("[Target Timing: 0:00 – 0:50 | Stand tall, make direct eye contact with the lead professor or director]", styles['SpeechDirection']))
+    story.append(Paragraph("PART 1: The Problem & Biological Mismatch", styles['SpeechSpeaker']))
+    story.append(Paragraph("Speaker: Asmita Manral (Team Lead) | 0:00 – 1:45 (~220 words) | Center Stage", styles['SpeechDirection']))
     
     speech_1 = (
-        "“Respected members of the jury, distinguished faculty, and guests.<br/><br/>"
-        "Sudden Cardiac Arrest claims over <b>350,000 lives</b> every single year in India alone. "
-        "In our country, the out-of-hospital survival rate is <b>below 5%</b>.<br/><br/>"
-        "The reason for this tragic loss of life is not a lack of medicine; it is a brutal, lethal mathematical mismatch:<br/>"
-        "When a human heart stops beating, irreversible biological brain death begins in just <b>4 minutes</b>.<br/>"
-        "Yet, across our cities and rural districts, an emergency ambulance takes anywhere from <b>20 to 40 minutes</b> to reach the patient.<br/><br/>"
-        "<i>[Pause for 1 second. Lower pitch slightly for emphasis.]</i><br/>"
-        "Waiting for a patient to collapse, and only then sounding an alarm, is biologically futile. "
-        "You cannot bridge a 30-minute ambulance transit gap with a 4-minute biological survival clock.”"
+        "“Respected members of the jury, distinguished faculty, and colleagues.<br/><br/>"
+        "Every single year in India, sudden cardiac arrest takes an estimated <b>5 to 7 lakh lives</b>. "
+        "Outside the hospital, our survival rate is barely <b>1 to 5 percent</b>.<br/><br/>"
+        "This tragedy is governed by an inescapable biological mismatch. "
+        "When circulatory arrest occurs, irreversible brain injury begins within <b>4 to 6 minutes</b>. "
+        "Yet across Indian cities and semi-urban communities, ambulance transit averages <b>20 to 40 minutes</b>. "
+        "If we wait for collapse before calling for help, the biological race is lost before it begins.<br/><br/>"
+        "<i>[Hold up the Sternum Pod and Wristband props]</i><br/>"
+        "However, clinical cardiology reveals a vital window of hope. The Oregon Sudden Unexpected Death Study proved that <b>51% of victims—over half—experience warning symptoms in the four weeks before collapse</b>.<br/><br/>"
+        "In India, this vulnerability is heightened. The ICMR-INDIAB study confirms that <b>101 million Indians live with diabetes</b>. "
+        "Because diabetic neuropathy damages autonomic pain pathways, <b>one in five—over 22%—suffer from completely silent ischemia</b>. They feel no crushing chest pain; their hearts suffer silently.<br/><br/>"
+        "To bridge this gap, we present <b>CardioSense: The Autonomous Sternal Sentry</b>. "
+        "It is a distributed, two-node wearable Body Area Network that listens to the heart's mechanical and electrical signals on the body itself, learns each wearer's individual normal, and acts autonomously before biological collapse.<br/><br/>"
+        "My teammate Gautam Batra will walk you through our sensing architecture.”"
     )
     story.append(Paragraph(speech_1, styles['SpeechBody']))
     story.append(Spacer(1, 10))
 
     # =========================================================================
-    # PART 2: THE CURRENT FAILURES (TOPIC 2)
+    # PART 2: GAUTAM BATRA - HARDWARE ARCHITECTURE & MOTION DENOISING
     # =========================================================================
-    story.append(Paragraph("SEGMENT 2: Why Smartwatches & Hospital Patches Fail", styles['SpeechSpeaker']))
-    story.append(Paragraph("[Target Timing: 0:50 – 1:45 | Gesture toward the competitor comparison section on the poster]", styles['SpeechDirection']))
+    story.append(Paragraph("PART 2: Multi-Modal Sensing & Zero-Glue Build", styles['SpeechSpeaker']))
+    story.append(Paragraph("Speaker: Gautam Batra | 1:45 – 4:45 (~370 words) | Pointing to Hardware Panels", styles['SpeechDirection']))
     
     speech_2 = (
-        "“So why hasn't existing wearable technology solved this crisis?<br/><br/>"
-        "Look at consumer smartwatches, like the Apple Watch or Galaxy Watch. They detect pulse loss <b>after</b> the heart has already stopped pumping. "
-        "An alert delivered when a patient is already lying unconscious on the floor is biologically too late. Furthermore, single-wrist sensors suffer from massive motion false alarms and are completely blind to respiration.<br/><br/>"
-        "Now look at clinical hospital patches, like the Zio Patch. They rely on wet hydrogel glue to conduct electrical signals. "
-        "Within 48 hours, body heat evaporates the water in the gel, signal impedance spikes, and the chemical adhesive causes painful skin maceration and contact dermatitis. "
-        "Over <b>85% of elderly cardiac patients abandon them</b> in under a week.<br/><br/>"
-        "And finally, wearable defibrillator garments like the ZOLL LifeVest cost an astronomical <b>4,000 dollars every single month</b>—making them entirely inaccessible for Indian families.<br/><br/>"
-        "We are trapped between consumer toys that alert too late, and medical patches that patients refuse to wear.”"
+        "“Thank you, Asmita. To understand why CardioSense succeeds where others fail, look at current technology:<br/><br/>"
+        "Consumer smartwatches measure only wrist pulse and sound alarms only <i>after</i> pulse is gone. "
+        "Hospital Holter patches record single-channel ECG passively for retrospective review, but they cannot intervene. "
+        "Crucially, hospital patches rely on aggressive chemical adhesives. A 2024 meta-analysis in the <i>Journal of Tissue Viability</i> showed that <b>medical adhesives injure the skin of approximately 16% of hospital inpatients</b>—causing tears, blisters, and severe dermatitis.<br/><br/>"
+        "We designed a zero-glue, dual-node architecture engineered for continuous comfort:<br/>"
+        "<b>Node A is the Sternal Pod</b>, worn over the lower sternum via a soft chest cord or breathable undershirt cradle. "
+        "It combines dry 316L medical stainless steel contacts with multi-modal physiological sensors: an ADS1292R front-end for ECG, a MAX30001 for chest bioimpedance, an LSM6DSOX 6-axis IMU capturing sternal recoil vibrations, an acoustic Knowles I2S digital microphone capturing heart sounds, and a TMP117 skin temperature sensor, managed by a dual-core Nordic nRF5340 microcontroller.<br/><br/>"
+        "<b>Node B is the PulseBand</b>, worn on the wrist. It houses a MAX86141 optical PPG sensor for peripheral pulse and dual dry steel electrodes for Galvanic Skin Response, paired with an nRF52840 SoC.<br/><br/>"
+        "<i>[Step to the Noise Cancellation diagram]</i><br/>"
+        "The greatest obstacle in wearable biometrics is body motion. When walking, foot strikes transmit shockwaves up the skeleton, corrupting micro-cardiac signals. "
+        "We solve this using <b>Dual-Node Active Motion Denoising</b>—analogous to active noise-cancelling headphones.<br/><br/>"
+        "Because the arm swings in direct cadence with walking gait, the wristband accelerometer captures an uncorrupted reference of footstrike cadence. "
+        "Our sternum pod uses an on-device Normalized Least Mean Squares (NLMS) adaptive filter to subtract walking vibrations in real time, demonstrating <b>approximately 24 dB of synthetic motion cancellation gain in simulation</b>.<br/><br/>"
+        "If severe motion renders signals indeterminate, the Sentry pauses analysis and explicitly reports <i>'Not Monitoring'</i> rather than guessing.<br/><br/>"
+        "I will now pass the stage to Nikhil Gavel to explain our on-device AI and verification.”"
     )
     story.append(Paragraph(speech_2, styles['SpeechBody']))
     story.append(Spacer(1, 10))
 
     # =========================================================================
-    # PART 3: THE BIOLOGICAL WARNING SIGNS (TOPIC 3)
+    # PART 3: NIKHIL GAVEL - EDGE AI, ESCALATION & SILICON VERIFICATION
     # =========================================================================
-    story.append(Paragraph("SEGMENT 3: The 1-to-6-Hour Biological Warning Signs", styles['SpeechSpeaker']))
-    story.append(Paragraph("[Target Timing: 1:45 – 2:50 | Point firmly to the Pathophysiology diagram on the poster]", styles['SpeechDirection']))
+    story.append(Paragraph("PART 3: 1.9 KB Edge AI, Escalation & Silicon Proof", styles['SpeechSpeaker']))
+    story.append(Paragraph("Speaker: Nikhil Gavel | 4:45 – 7:45 (~380 words) | Pointing to Silicon & Modeling", styles['SpeechDirection']))
     
     speech_3 = (
-        "“The core clinical breakthrough behind CardioSense is a foundational medical reality: "
-        "<b>Sudden cardiac arrest is rarely an instantaneous event.</b><br/><br/>"
-        "In over 50% of victims, the cardiovascular and autonomic nervous systems emit clear, measurable distress precursors <b>15 to 30 minutes before collapse</b>.<br/><br/>"
-        "When coronary arteries occlude and the heart muscle is starved of oxygen, five physiological signals cascade across the body simultaneously:<br/>"
-        "<b>First:</b> The Pre-Ejection Period lengthens. The ischemic left ventricle becomes weak and sluggish, taking over <b>140 milliseconds</b> just to generate enough pressure to force open the aortic valve.<br/>"
-        "<b>Second:</b> Sternal recoil shockwaves from aortic valve ejection collapse by more than <b>50%</b>.<br/>"
-        "<b>Third:</b> The autonomic cold-sweat surge. As blood pressure falls, the sympathetic nervous system clamps peripheral vessels while firing sweat glands, creating heavy ionic sweating on ice-cold skin.<br/>"
-        "<b>Fourth:</b> Arterial blood oxygen plummets below <b>88%</b>.<br/>"
-        "<b>And Fifth:</b> Breathing deteriorates into rapid, shallow, agonal gasps.<br/><br/>"
-        "<i>[Emphasize with open hand gesture]</i><br/>"
-        "Crucially, these five distress signals occur <b>while the patient is at physical rest</b>. "
-        "When captured together, they represent the definitive biological signature of an impending cardiac arrest.”"
+        "“Thank you, Gautam. Our intelligence runs strictly on the body, preserving privacy and eliminating dependence on cloud connectivity.<br/><br/>"
+        "<i>[Point to the Silicon Card on the poster]</i><br/>"
+        "We designed an ultra-compact 8-bit quantized neural network containing exactly <b>1,538 parameters</b>. "
+        "It requires only <b>1.9 KB of Flash memory</b> and <b>1.3 KB of RAM</b>. "
+        "Per heartbeat, it executes just <b>43,144 multiply-accumulates</b>, completing in <b>44,962 clock cycles</b>. "
+        "At 64 MHz, inference finishes in well under 1 millisecond. This tiny footprint allows the main processor core to sleep over 99% of the time.<br/><br/>"
+        "Every patient's cardiovascular dynamics are unique. CardioSense adapts to each wearer's individual resting baseline. "
+        "On public clinical records from the European ST-T Database, adapting to individual baseline dynamics improves the ranking score from <b>0.64 to 0.80 AUROC</b>.<br/><br/>"
+        "<i>[Point to the Two-Tier Escalation Timeline]</i><br/>"
+        "Our alarm state machine operates in two deterministic tiers:<br/>"
+        "• <b>Tier 1 (Check-in):</b> If physiological parameters drift from the learned baseline, the wristband issues only a quiet haptic vibration. No panic, no false sirens.<br/>"
+        "• <b>Tier 2 (Emergency Dispatch):</b> If peripheral wrist pulse is lost AND the chest IMU confirms physical stillness for 5 seconds, an abortable <b>30-second cancel window</b> opens with audio-tactile alerts. "
+        "The wearer can abort false triggers simply by holding the tactile button for 2 seconds.<br/><br/>"
+        "If uncancelled after 30 seconds, the pod autonomously triggers emergency dispatch: an automated emergency call to <b>112</b> with GPS location, an <b>85 dB onboard siren</b>, and a steady <b>110 BPM metronome pacing beat</b> to guide bystanders in CPR.<br/><br/>"
+        "<i>[Emphasize verification integrity]</i><br/>"
+        "We verified this rigorously: <b>77 of 77 simulated test cases pass</b>, covering 35 whole-device fault modes and 22 decision checks. "
+        "When translated into Verilog hardware RTL, it achieved a <b>perfect 2,064 out of 2,064 pattern match against Python</b> in Vivado simulation. "
+        "Replayed on public PhysioNet NSRDB recordings, it achieved <b>99.95% beat finding</b>, and on 17.9 hours of real daily activity from the PPG-DaLiA dataset, cross-checking the chest eliminated all 13 wrist-alone false alarms.<br/><br/>"
+        "As an honest engineering team, our boundary is clear: all logic is simulated and replayed on public databases; human clinical trials represent future work.<br/><br/>"
+        "Asmita will now conclude with our social impact and economic viability.”"
     )
     story.append(Paragraph(speech_3, styles['SpeechBody']))
     story.append(Spacer(1, 10))
 
     # =========================================================================
-    # PART 4: MOTION DENOISING (TOPIC 7)
+    # PART 4: ASMITA MANRAL - CLOSING, ECONOMICS & NATIONAL ALIGNMENT
     # =========================================================================
-    story.append(Paragraph("SEGMENT 4: Cancelling Footsteps (Dual-Node DSP)", styles['SpeechSpeaker']))
-    story.append(Paragraph("[Target Timing: 2:50 – 3:45 | Show your physical slap-band and locket props in hand]", styles['SpeechDirection']))
+    story.append(Paragraph("PART 4: Social Impact, Costing & National Vision", styles['SpeechSpeaker']))
+    story.append(Paragraph("Speaker: Asmita Manral (Team Lead) | 7:45 – 10:00 (~280 words) | Center Stage", styles['SpeechDirection']))
     
     speech_4 = (
-        "“Now, the single greatest engineering challenge in wearable medicine is movement. "
-        "Whenever a person walks, heel-strike shockwaves travel up the skeletal column into the chest, completely corrupting subtle heart recoil vibrations.<br/><br/>"
-        "We solved this using an elegant physical principle: <b>Dual-Node Active Noise Cancellation</b>, working exactly like noise-cancelling headphones.<br/><br/>"
-        "Because our wristband swings in cadence with the gait, its accelerometer captures an uncorrupted reference signal of the walking rhythm. "
-        "Our sternum pod uses this wrist reference to model the body's physical vibration transfer and <b>mathematically subtracts the footstep shockwaves in real time</b>.<br/><br/>"
-        "This algorithm executes on-device in just <b>28 microseconds</b>, consumes barely <b>38 microwatts</b> of power, and achieves over <b>28 decibels of noise rejection</b>.<br/>"
-        "It completely strips away walking shockwaves and shivering tremors, isolating pure, diagnostic cardiac recoil even while the patient is actively moving.”"
+        "“Thank you, Nikhil.<br/><br/>"
+        "CardioSense is engineered for real Indian healthcare realities.<br/><br/>"
+        "Our first deployment targets post-stent and post-infarction patients discharged home during their highest-risk 30-day recovery window, as well as high-risk diabetic individuals.<br/><br/>"
+        "<i>[Point to the Economics section]</i><br/>"
+        "Consider the economics: A commercial smartwatch with loss-of-pulse calling costs ₹39,900 at retail, while wearable defibrillators rent for lakhs per month. "
+        "CardioSense's total bill of materials is <b>₹3,180 at 10,000 units</b> (~$33.50). "
+        "Because our pods are fully sealed, sanitized with alcohol wipes, and reused across ~6 successive patients with washable cradles, the effective hardware cost plummets to <b>just ₹530 per patient</b>.<br/><br/>"
+        "Our architecture directly advances Indian national priorities:<br/>"
+        "1. <b>Indigenous Semiconductors:</b> Our 1.9 KB silicon footprint is purposefully sized to fit within India's <i>Chips to Startup (C2S)</i> programme, enabling domestic ASIC tape-outs across 305 partner institutions.<br/>"
+        "2. <b>National Infrastructure:</b> It integrates directly into India's 112 Emergency Response Support System.<br/>"
+        "3. <b>Regulatory Readiness:</b> Its privacy-preserving on-device architecture aligns with the Digital Personal Data Protection (DPDP) Act 2023 and CDSCO medical device investigational pathways.<br/><br/>"
+        "<i>[Final resolute closing]</i><br/>"
+        "CardioSense transforms cardiac monitoring from passive, post-collapse panic into proactive, autonomous protection. "
+        "It is indigenous, affordable, and built to ensure that no Indian life is lost simply because help arrived too late.<br/><br/>"
+        "Thank you. We are ready for your questions.”"
     )
     story.append(Paragraph(speech_4, styles['SpeechBody']))
-    story.append(Spacer(1, 10))
-
-    # =========================================================================
-    # PART 5: HEAD-TO-HEAD COMPARISON & CLOSE (TOPIC 11)
-    # =========================================================================
-    story.append(Paragraph("SEGMENT 5: Head-to-Head Comparison & The Final Pitch", styles['SpeechSpeaker']))
-    story.append(Paragraph("[Target Timing: 3:45 – 4:35 | Point to the Comparison Table and conclude with conviction]", styles['SpeechDirection']))
-    
-    speech_5 = (
-        "“To see the complete clinical and economic picture, look at our competitors head-to-head:<br/><br/>"
-        "Consumer smartwatches tell you that you've collapsed only after your pulse has ceased.<br/>"
-        "<b>CardioSense gives you a 15-to-30-minute early warning window before collapse occurs.</b><br/><br/>"
-        "Hospital patches require sticky, single-use adhesives that cost 300 dollars and get thrown in the trash after 7 days.<br/>"
-        "<b>CardioSense uses medical-grade 316L dry stainless steel contacts that never dry out, never cause dermatitis, and can be sanitized with alcohol wipes to be reused across multiple patients for just 5 dollars and 58 cents per patient.</b><br/><br/>"
-        "And while the ZOLL LifeVest rents for ₹3.5 lakh every month, our entire functional benchtop prototype costs <b>under ₹4,800</b>, scaling to a mass-production kit cost of <b>just 33 dollars</b>.<br/><br/>"
-        "<i>[Final concluding delivery, steady and confident]</i><br/>"
-        "CardioSense is not another wearable gadget. It is a zero-adhesive, proactive early-warning Body Area Network, engineered from first principles to save Indian lives before the biological window expires.<br/><br/>"
-        "Thank you. We now welcome your questions.”"
-    )
-    story.append(Paragraph(speech_5, styles['SpeechBody']))
-    story.append(Spacer(1, 14))
+    story.append(Spacer(1, 12))
 
     # Summary timing table
     time_data = [
-        [Paragraph("<b>Presentation Segment</b>", styles['TableHeader']), Paragraph("<b>Assigned Topic</b>", styles['TableHeader']), Paragraph("<b>Allocated Window</b>", styles['TableHeader']), Paragraph("<b>Key Goal</b>", styles['TableHeader'])],
-        [Paragraph("1. The Lethal Problem", styles['TableCellBold']), Paragraph("Topic 1", styles['TableCell']), Paragraph("0:00 – 0:50 (50s)", styles['TableCell']), Paragraph("Establish urgency & 4-min vs 30-min transit gap", styles['TableCell'])],
-        [Paragraph("2. Why Current Devices Fail", styles['TableCellBold']), Paragraph("Topic 2", styles['TableCell']), Paragraph("0:50 – 1:45 (55s)", styles['TableCell']), Paragraph("Expose smartwatch, patch & LifeVest flaws", styles['TableCell'])],
-        [Paragraph("3. Biological Warning Signs", styles['TableCellBold']), Paragraph("Topic 3", styles['TableCell']), Paragraph("1:45 – 2:50 (65s)", styles['TableCell']), Paragraph("Prove PEP, AO collapse & cold sweat at rest", styles['TableCell'])],
-        [Paragraph("4. Footstep Noise Cancellation", styles['TableCellBold']), Paragraph("Topic 7", styles['TableCell']), Paragraph("2:50 – 3:45 (55s)", styles['TableCell']), Paragraph("Deliver headphone analogy & 28 µs / 28 dB proof", styles['TableCell'])],
-        [Paragraph("5. Head-to-Head Comparison", styles['TableCellBold']), Paragraph("Topic 11", styles['TableCell']), Paragraph("3:45 – 4:35 (50s)", styles['TableCell']), Paragraph("Dismantle competitors & state $5.58 reuse win", styles['TableCell'])],
+        [Paragraph("<b>Speaker</b>", styles['TableHeader']), Paragraph("<b>Assigned Segment</b>", styles['TableHeader']), Paragraph("<b>Timing & Cadence</b>", styles['TableHeader']), Paragraph("<b>Key Visual / Poster Target</b>", styles['TableHeader'])],
+        [Paragraph("<b>Asmita Manral</b><br/>(Team Lead)", styles['TableCellBold']), Paragraph("1. Lethal Problem & Mismatch<br/>• 5–7 lakh deaths, 1–5% survival<br/>• 101M diabetics, silent ischemia", styles['TableCell']), Paragraph("0:00 – 1:45<br/>(1m 45s / 220 words)", styles['TableCell']), Paragraph("Center Stage; Props in hand; Abstract & Social Impact boxes", styles['TableCell'])],
+        [Paragraph("<b>Gautam Batra</b>", styles['TableCellBold']), Paragraph("2. Hardware & Denoising<br/>• 16% adhesive injury meta-analysis<br/>• Pod & Band build, ~24 dB NLMS filter", styles['TableCell']), Paragraph("1:45 – 4:45<br/>(3m 00s / 370 words)", styles['TableCell']), Paragraph("Stage Right; Circuit diagram, exploded pod view, noise filter", styles['TableCell'])],
+        [Paragraph("<b>Nikhil Gavel</b>", styles['TableCellBold']), Paragraph("3. Edge AI & Verification<br/>• 1.9 KB Flash, 1.3 KB RAM, 44,962 cyc<br/>• 77/77 checks, 2,064 pattern match", styles['TableCell']), Paragraph("4:45 – 7:45<br/>(3m 00s / 380 words)", styles['TableCell']), Paragraph("Stage Left; Silicon card, 2-tier escalation timeline, test checks", styles['TableCell'])],
+        [Paragraph("<b>Asmita Manral</b><br/>(Team Lead)", styles['TableCellBold']), Paragraph("4. Economics, Vision & Q&A<br/>• ₹3,180 BOM / ₹530 reuse vs ₹39,900<br/>• C2S 305 chips, 112 dispatch, CDSCO", styles['TableCell']), Paragraph("7:45 – 10:00<br/>(2m 15s / 280 words)", styles['TableCell']), Paragraph("Center Stage; Cost table, Made for India panel, defense open", styles['TableCell'])],
     ]
-    t_time = Table(time_data, colWidths=[120, 80, 110, 190])
+    t_time = Table(time_data, colWidths=[95, 175, 95, 145])
     t_time.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#C53030")),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E0")),
@@ -151,7 +167,15 @@ def build_speech_pdf():
     story.append(t_time)
 
     doc.build(story, canvasmaker=NumberedCanvas)
-    print(f"Speech Master PDF successfully generated at: {pdf_filename}")
+    
+    # Also copy to download folder
+    import shutil
+    try:
+        shutil.copy2(pdf_filename_local, pdf_filename_dl)
+    except Exception as e:
+        print("Note on DL copy:", e)
+        
+    print(f"Speech Master PDF successfully generated at: {pdf_filename_local}")
 
 if __name__ == "__main__":
     build_speech_pdf()

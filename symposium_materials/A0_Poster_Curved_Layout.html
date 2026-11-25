@@ -342,9 +342,9 @@ CARDIAC:    AUTONOMIC:
     <h3>Hybrid Motion Denoising (NLMS + DWT)</h3>
     <p>Wrist IMU captures walking rhythm → algorithm subtracts footstrike shockwaves from chest cardiac signals (like noise-cancelling headphones for the heart).</p>
     <div class="stat-strip">
-      <div class="s"><div class="sv" style="color:var(--cyan);">28 µs</div><div class="sl">DSP Latency</div></div>
-      <div class="s"><div class="sv" style="color:var(--green);">&gt;28 dB</div><div class="sl">Noise Rejection</div></div>
-      <div class="s"><div class="sv" style="color:var(--amber);">38 µW</div><div class="sl">DSP Power</div></div>
+      <div class="s"><div class="sv" style="color:var(--cyan);"><1 ms</div><div class="sl">DSP Latency</div></div>
+      <div class="s"><div class="sv" style="color:var(--green);">~24 dB</div><div class="sl">Noise Rejection</div></div>
+      <div class="s"><div class="sv" style="color:var(--amber);">1.9 KB</div><div class="sl">DSP Power</div></div>
     </div>
     <p style="font-size:11px;"><strong>100% Offline:</strong> All inference on nRF5340's 128 MHz core. Zero cloud. Complete biometric privacy.</p>
   </div>
@@ -394,7 +394,7 @@ CARDIAC:    AUTONOMIC:
           <tr><td>MCU Active Current</td><td style="color:var(--green); font-weight:700;">1.64 mA</td><td>nRF5340 App Core @ 128 MHz</td></tr>
           <tr><td>Deep Sleep Current</td><td style="color:var(--green); font-weight:700;">1.5 µA</td><td>System ON, FIFO watermark wakeup</td></tr>
           <tr><td>AI Inference Latency</td><td style="color:var(--amber); font-weight:700;">&lt;42 ms / beat</td><td>CNN-LSTM + Autoencoder combined</td></tr>
-          <tr><td>Motion DSP Pipeline</td><td style="color:var(--cyan); font-weight:700;">28 µs / 38 µW</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
+          <tr><td>Motion DSP Pipeline</td><td style="color:var(--cyan); font-weight:700;"><1 ms / 1.9 KB</td><td>Hybrid NLMS + DWT per cardiac cycle</td></tr>
           <tr><td>Battery Duty Cycle</td><td style="color:var(--green); font-weight:700;">7-Day Runtime</td><td>Magnetic dock recharge &lt;45 min</td></tr>
           <tr><td>BLE Dispatch Latency</td><td style="color:var(--cyan); font-weight:700;">&lt;10 ms</td><td>Encrypted 128-bit priority packet</td></tr>
         </tbody>
@@ -476,7 +476,7 @@ CARDIAC:    AUTONOMIC:
   <div class="divider"></div>
   <div class="metric"><div class="mv" style="color:var(--cyan);">1.5 µA Sleep</div><div class="ml">Ultra-Low Power</div></div>
   <div class="divider"></div>
-  <div class="metric"><div class="mv" style="color:var(--green);">28 µs DSP</div><div class="ml">Motion Denoising</div></div>
+  <div class="metric"><div class="mv" style="color:var(--green);"><1 ms DSP</div><div class="ml">Motion Denoising</div></div>
   <div class="divider"></div>
   <div class="metric"><div class="mv" style="color:var(--green);">7-Day Battery</div><div class="ml">Continuous Wear</div></div>
   <div class="divider"></div>

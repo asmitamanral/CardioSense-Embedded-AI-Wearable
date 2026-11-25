@@ -1,6 +1,10 @@
 # CardioSense: Abstract & Technical Proposal
-**Track:** Track 1 (Applied Innovation / Smart Healthcare / IoT)  
-**Event:** Make in Silicon Ideathon — IIIT Naya Raipur (IIITNR)  
+
+> **Registration ID:** 27198  
+> **Track:** Track 1: Smart Innovation in AI with Embedded Platform  
+> **Event:** MakeInSilicon 2026 Ideathon — IIIT Naya Raipur (IIITNR)  
+> **Team Code Blue:** Asmita Manral (Lead), Nikhil Gavel, Gautam Batra  
+> **Affiliation:** Dr. Shyama Prasad Mukherjee International Institute of Information Technology, Naya Raipur (DSPM IIITNR)  
 
 ---
 
